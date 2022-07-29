@@ -119,12 +119,12 @@ public class ProdutoDAO implements FuncoesDAO<Produto> {
     }
     
     private Produto criaProduto(ResultSet rs) throws SQLException {
+        int id = rs.getInt("id_produto");
         String descricaoProduto = rs.getString("descricao_produto");
         Integer quantidadeEstoque = rs.getInt("quantidade_estoque");
         Double valor = rs.getDouble("valor");
 
-
-        return new Produto(descricaoProduto, quantidadeEstoque, valor);
+        return new Produto(id, descricaoProduto, quantidadeEstoque, valor);
     }
 
 }

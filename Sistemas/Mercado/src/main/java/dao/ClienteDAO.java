@@ -120,12 +120,13 @@ public class ClienteDAO implements FuncoesDAO<Cliente> {
     }
 
     private Cliente criaCliente(ResultSet rs) throws SQLException {
+        int id = rs.getInt("id_cliente");
         String nome = rs.getString("nome_cliente");
         String cpf = rs.getString("cpf");
         String telefone = rs.getString("telefone");
         String email = rs.getString("email");
 
-        return new Cliente(nome, cpf, telefone, email);
+        return new Cliente(id, nome, cpf, telefone, email);
     }
 
 }

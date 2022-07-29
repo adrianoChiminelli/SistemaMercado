@@ -1,8 +1,11 @@
 package dao;
 
+import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Conexao {
@@ -22,5 +25,17 @@ public class Conexao {
         }
 
         return null;
+    }
+
+    public boolean excutaComando(String comando) {
+        Connection con = conectar();
+
+        try {
+            PreparedStatement pstm = con.prepareStatement(comando);
+            return pstm.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao Conectar!", 0);
+        }
+        return false;
     }
 }

@@ -14,6 +14,13 @@ public class Venda {
         this.valorTotal = valorTotal;
     }
 
+    public Venda(Integer idVendas, Integer fkCliente, Integer quantidadeTotal, Double valorTotal) {
+        this.idVendas = idVendas;
+        this.fkCliente = fkCliente;
+        this.quantidadeTotal = quantidadeTotal;
+        this.valorTotal = valorTotal;
+    }
+
     public Integer getIdVendas() {
         return idVendas;
     }

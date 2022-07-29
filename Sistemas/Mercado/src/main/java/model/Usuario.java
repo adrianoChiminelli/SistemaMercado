@@ -2,24 +2,31 @@ package model;
 
 public class Usuario {
 
-    private Integer idUsuarios, nivelAcesso;
+    private Integer idUsuario, nivelAcesso;
     private String nomeUsuario, senha;
 
     public Usuario() {
     }
 
-    public Usuario(Integer nivelAcesso, String nomeUsuario, String senha) {
+    public Usuario(String nomeUsuario, String senha, Integer nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
     }
 
-    public Integer getIdUsuarios() {
-        return idUsuarios;
+    public Usuario(Integer idUsuario, String nomeUsuario, String senha, Integer nivelAcesso) {
+        this.idUsuario = idUsuario;
+        this.nivelAcesso = nivelAcesso;
+        this.nomeUsuario = nomeUsuario;
+        this.senha = senha;
     }
 
-    public void setIdUsuarios(Integer idUsuarios) {
-        this.idUsuarios = idUsuarios;
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuarios) {
+        this.idUsuario = idUsuarios;
     }
 
     public Integer getNivelAcesso() {
@@ -44,6 +51,11 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nivelAcesso=" + nivelAcesso + ", nomeUsuario=" + nomeUsuario + ", senha=" + senha + '}';
     }
 
 }

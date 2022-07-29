@@ -15,6 +15,14 @@ public class Cliente {
         this.email = email;
     }
 
+    public Cliente(Integer idCliente, String nomeCliente, String cpf, String telefone, String email) {
+        this.idCliente = idCliente;
+        this.nomeCliente = nomeCliente;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.email = email;
+    }
+
     public Integer getIdCliente() {
         return idCliente;
     }

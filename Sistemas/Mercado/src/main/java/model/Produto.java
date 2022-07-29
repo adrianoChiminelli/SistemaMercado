@@ -7,10 +7,16 @@ public class Produto {
     private Double valor;
 
     public Produto() {
-
     }
 
     public Produto(String descricaoProduto, Integer quantidadeEstoque, Double valor) {
+        this.descricaoProduto = descricaoProduto;
+        this.quantidadeEstoque = quantidadeEstoque;
+        this.valor = valor;
+    }
+
+    public Produto(Integer idProduto, String descricaoProduto, Integer quantidadeEstoque, Double valor) {
+        this.idProduto = idProduto;
         this.descricaoProduto = descricaoProduto;
         this.quantidadeEstoque = quantidadeEstoque;
         this.valor = valor;
