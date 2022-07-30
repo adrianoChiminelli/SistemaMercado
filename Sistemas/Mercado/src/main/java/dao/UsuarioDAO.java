@@ -118,6 +118,29 @@ public class UsuarioDAO implements FuncoesDAO<Usuario> {
         }
     }
 
+    public boolean validaLogin(String usuario, String senhaInformada) {
+        String sql = "SELECT senha FROM usuarios WHERE nome_usuario = ?";
+
+        try {
+            Connection conexao = new Conexao().conectar();
+            PreparedStatement pstm = conexao.prepareStatement(sql);
+            pstm.setString(1, usuario);
+
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                String senhaSalva = rs.getString("senha");
+                return new Cripto().validaSenha(senhaInformada, senhaSalva);
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao alterar " + e.getMessage());
+        }
+        return false;
+    }
+
     private Usuario criaUsuario(ResultSet rs) throws SQLException {
         int id = rs.getInt("id_usuario");
         String usuario = rs.getString("nome_usuario");
@@ -126,4 +149,5 @@ public class UsuarioDAO implements FuncoesDAO<Usuario> {
 
         return new Usuario(id, usuario, senha, nivelAcesso);
     }
+
 }
