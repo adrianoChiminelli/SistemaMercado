@@ -114,6 +114,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoUsuarioKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="campoSenha">
           <Properties>
@@ -129,7 +132,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoSenhaFocusGained"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoSenhaKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEntrar">

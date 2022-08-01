@@ -35,6 +35,9 @@ public class UtilCPF {
         if (!verificaDigitos(cpf)) {
             return false;
         }
+        if (cpf.contains(".") || cpf.contains("-")) {
+            cpf = removeMascara(cpf);
+        }
 
         ArrayList<Integer> noveDigitos = new ArrayList<>();
 

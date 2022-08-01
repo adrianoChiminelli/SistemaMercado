@@ -24,10 +24,10 @@ public class ClienteDAO implements FuncoesDAO<Cliente> {
     SELECT_BY_ID = "SELECT * FROM clientes WHERE id_cliente = ?";
     
     private static final String
-    DELETE = "DELETE FROM cliente WHERE id_cliente = ?";
+    DELETE = "DELETE FROM clientes WHERE id_cliente = ?";
     
     private static final String
-    UPDATE = "UPDATE clientes SET nome_client = ?, cpf = ?, telefone = ?, email = ? WHERE id_cliente = ?";
+    UPDATE = "UPDATE clientes SET nome_cliente = ?, cpf = ?, telefone = ?, email = ? WHERE id_cliente = ?";
     
     @Override
     public void insert(Cliente objeto) {
@@ -117,6 +117,24 @@ public class ClienteDAO implements FuncoesDAO<Cliente> {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao alterar " + e.getMessage());
         }
+    }
+    
+    public boolean cpfJaCadastrado(String cpf) {
+        Connection conexao = new Conexao().conectar();
+        String sql = "SELECT * FROM clientes WHERE cpf = ?";
+
+        try {
+            PreparedStatement pstm = conexao.prepareStatement(sql);
+            pstm.setString(1, cpf);
+            
+            ResultSet rs = pstm.executeQuery();
+           
+            return rs.next();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro  " + e.getMessage());
+        }
+        return false;
     }
 
     private Cliente criaCliente(ResultSet rs) throws SQLException {

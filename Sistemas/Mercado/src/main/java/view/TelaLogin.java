@@ -1,8 +1,7 @@
 package view;
 
 import controller.TelaLoginController;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -33,12 +32,17 @@ public class TelaLogin extends javax.swing.JFrame {
 
         campoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         campoUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(15, 50, 130)));
+        campoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoUsuarioKeyReleased(evt);
+            }
+        });
 
         campoSenha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         campoSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(15, 50, 130)));
-        campoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoSenhaFocusGained(evt);
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campoSenhaKeyReleased(evt);
             }
         });
 
@@ -136,6 +140,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         if (controller.validaLogin(usuario, senha)) {
             TelaPrincipal tela = new TelaPrincipal();
+            tela.setIconImage(new ImageIcon("/images/IconJanela.png").getImage());
             tela.setVisible(true);
             this.dispose();
         } else {
@@ -143,9 +148,17 @@ public class TelaLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
-    private void campoSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoSenhaFocusGained
-        campoSenha.selectAll();
-    }//GEN-LAST:event_campoSenhaFocusGained
+    private void campoSenhaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyReleased
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btnEntrar.doClick();
+        }
+    }//GEN-LAST:event_campoSenhaKeyReleased
+
+    private void campoUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoUsuarioKeyReleased
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btnEntrar.doClick();
+        }
+    }//GEN-LAST:event_campoUsuarioKeyReleased
 
     private String getSenha(char[] ch) {
         String senha = "";
@@ -154,7 +167,6 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         return senha;
     }
-    
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -164,7 +176,7 @@ public class TelaLogin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("FlatDarkLaf".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

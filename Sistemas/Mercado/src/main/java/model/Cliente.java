@@ -1,5 +1,7 @@
 package model;
 
+import dao.ClienteDAO;
+
 public class Cliente {
 
     private Integer idCliente;
@@ -61,6 +63,14 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void salvar(Cliente cli) {
+        new ClienteDAO().insert(cli);
+    }
+
+    public void alterar(Cliente cli) {
+        new ClienteDAO().update(cli);
     }
 
 }
