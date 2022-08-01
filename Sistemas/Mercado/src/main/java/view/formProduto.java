@@ -1,26 +1,24 @@
 package view;
 
-import controller.FormClienteController;
+import controller.FormProdutoController;
 import javax.swing.JOptionPane;
-import utils.UtilCPF;
 
-public class FormCliente extends javax.swing.JPanel {
+public class FormProduto extends javax.swing.JPanel {
 
-    public FormCliente() {
+    public FormProduto() {
         initComponents();
         atualizaTabela();
     }
 
     private void atualizaTabela() {
-        FormClienteController controller = new FormClienteController();
-        tbClientes.setModel(controller.montarTabela(tbClientes));
+        FormProdutoController controller = new FormProdutoController();
+        tbProdutos.setModel(controller.montarTabela(tbProdutos));
     }
 
     private void ativaCadastro(boolean habilita) {
-        campoNomeCli.setEditable(habilita);
-        campoCPF.setEditable(habilita);
-        campoEmail.setEditable(habilita);
-        campoTel.setEditable(habilita);
+        campoDescricao.setEditable(habilita);
+        jsQuant.setEnabled(habilita);
+        campoValor.setEditable(habilita);
 
         btnSalvar.setVisible(habilita);
         btnCancelar.setVisible(habilita);
@@ -32,10 +30,9 @@ public class FormCliente extends javax.swing.JPanel {
 
     private void limpaCampos() {
         campoID.setText("");
-        campoNomeCli.setText("");
-        campoCPF.setText("");
-        campoEmail.setText("");
-        campoTel.setText("");
+        campoDescricao.setText("");
+        jsQuant.setValue(0);
+        campoValor.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -43,53 +40,51 @@ public class FormCliente extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbClientes = new javax.swing.JTable();
+        tbProdutos = new javax.swing.JTable();
         btnPesq = new javax.swing.JToggleButton();
         btnSalvar = new javax.swing.JToggleButton();
         campoID = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JToggleButton();
-        campoNomeCli = new javax.swing.JTextField();
+        campoDescricao = new javax.swing.JTextField();
         lbID = new javax.swing.JLabel();
-        campoCPF = new javax.swing.JTextField();
-        campoEmail = new javax.swing.JTextField();
-        lbNome = new javax.swing.JLabel();
-        campoTel = new javax.swing.JTextField();
-        lbCPF = new javax.swing.JLabel();
+        jsQuant = new javax.swing.JSpinner();
+        campoValor = new javax.swing.JTextField();
+        lbDescricao = new javax.swing.JLabel();
+        lbQuant = new javax.swing.JLabel();
         campoPesq = new javax.swing.JTextField();
-        lbEmail = new javax.swing.JLabel();
+        lbValor = new javax.swing.JLabel();
         btnNovo = new javax.swing.JToggleButton();
-        lbTel = new javax.swing.JLabel();
         btnAlterar = new javax.swing.JToggleButton();
         btnExcluir = new javax.swing.JToggleButton();
         btnLimpar = new javax.swing.JToggleButton();
 
         setMinimumSize(new java.awt.Dimension(1280, 678));
-        setName("Clientes"); // NOI18N
+        setName("Produtos"); // NOI18N
 
-        tbClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tbProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome Cliente", "CPF", "E-mail", "Tel."
+                "ID", "Descrição Produto", "Quantidade Estoque", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tbClientes.getColumnModel().getColumn(0).setMinWidth(35);
-        tbClientes.getColumnModel().getColumn(0).setMaxWidth(35);
-        tbClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbProdutos.getColumnModel().getColumn(0).setMinWidth(35);
+        tbProdutos.getColumnModel().getColumn(0).setMaxWidth(35);
+        tbProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbClientesMouseClicked(evt);
+                tbProdutosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbClientes);
+        jScrollPane1.setViewportView(tbProdutos);
 
         btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
 
@@ -117,36 +112,29 @@ public class FormCliente extends javax.swing.JPanel {
             }
         });
 
-        campoNomeCli.setEditable(false);
+        campoDescricao.setEditable(false);
 
         lbID.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbID.setText("ID");
 
-        campoCPF.setEditable(false);
-        campoCPF.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campoCPFFocusLost(evt);
-            }
-        });
+        jsQuant.setEnabled(false);
 
-        campoEmail.setEditable(false);
+        campoValor.setEditable(false);
 
-        lbNome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbNome.setText("Nome");
+        lbDescricao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbDescricao.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbDescricao.setText("Descricao");
 
-        campoTel.setEditable(false);
-
-        lbCPF.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbCPF.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbCPF.setText("CPF");
+        lbQuant.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbQuant.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbQuant.setText("Quant.");
 
         campoPesq.setText("Pesquisar");
 
-        lbEmail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbEmail.setText("E-mail");
+        lbValor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbValor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbValor.setText("Valor");
 
         btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconAdicionar.png"))); // NOI18N
         btnNovo.setText("Novo");
@@ -157,10 +145,6 @@ public class FormCliente extends javax.swing.JPanel {
                 btnNovoActionPerformed(evt);
             }
         });
-
-        lbTel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbTel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbTel.setText("Tel.");
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Lista.png"))); // NOI18N
         btnAlterar.setText("Alterar");
@@ -195,7 +179,7 @@ public class FormCliente extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,22 +197,21 @@ public class FormCliente extends javax.swing.JPanel {
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbID)
-                            .addComponent(lbNome)
-                            .addComponent(lbCPF)
-                            .addComponent(lbEmail)
-                            .addComponent(lbTel))
+                            .addComponent(lbDescricao)
+                            .addComponent(lbQuant))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(campoTel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                            .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jsQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(lbValor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -249,23 +232,22 @@ public class FormCliente extends javax.swing.JPanel {
                             .addComponent(lbID))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbNome))
+                            .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbDescricao))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbCPF))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbEmail))
-                        .addGap(18, 18, 18)
+                            .addComponent(lbQuant)
+                            .addComponent(jsQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(campoTel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbTel))
-                            .addComponent(btnLimpar))
-                        .addGap(75, 75, 75)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(campoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbValor)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(btnLimpar)))
+                        .addGap(135, 135, 135)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSalvar)
                             .addComponent(btnCancelar)))
@@ -295,37 +277,40 @@ public class FormCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        FormClienteController controller = new FormClienteController();
+        FormProdutoController controller = new FormProdutoController();
         int id = Integer.parseInt(campoID.getText());
-        String nome = campoNomeCli.getText();
+        String descricao = campoDescricao.getText();
 
-        boolean sucesso = controller.excluiCliente(id, nome);
+        boolean sucesso = controller.excluiProduto(id, descricao);
         if (sucesso) {
-            JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!", "Concluido", 4);
+            JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!", "Concluido", 1);
         }
         atualizaTabela();
         limpaCampos();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        FormClienteController controller = new FormClienteController();
+        FormProdutoController controller = new FormProdutoController();
         boolean sucesso = false;
 
-        String nomeCli = campoNomeCli.getText();
-        String cpf = campoCPF.getText();
-        String email = campoEmail.getText();
-        String tel = campoTel.getText();
+        try {
+            String descricao = campoDescricao.getText();
+            int quant = (Integer) jsQuant.getValue();
+            Double valor = Double.parseDouble(campoValor.getText());
+            if ("Salvar".equals(btnSalvar.getText())) {
+                sucesso = controller.salvaProduto(descricao, quant, valor);
+            } else {
+                int id = Integer.parseInt(campoID.getText());
+                sucesso = controller.alteraProduto(id, descricao, quant, valor);
+            }
 
-        if ("Salvar".equals(btnSalvar.getText())) {
-            sucesso = controller.salvaCliente(nomeCli, cpf, email, tel);
-        } else {
-            int id = Integer.parseInt(campoID.getText());
-            sucesso = controller.alteraCliente(id, nomeCli, cpf, email, tel);
-        }
-        if (sucesso) {
-            atualizaTabela();
-            limpaCampos();
-            ativaCadastro(false);
+            if (sucesso) {
+                atualizaTabela();
+                limpaCampos();
+                ativaCadastro(false);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Preencha as informações Corretamente!", "Erro ao cadastrar", 0);
         }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -339,23 +324,17 @@ public class FormCliente extends javax.swing.JPanel {
         limpaCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
 
-    private void campoCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCPFFocusLost
-        String cpf = campoCPF.getText();
-        campoCPF.setText(new UtilCPF().formatarCPF(cpf));
-    }//GEN-LAST:event_campoCPFFocusLost
-
-    private void tbClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbClientesMouseClicked
+    private void tbProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProdutosMouseClicked
         if (!btnSalvar.isVisible()) {
-            int linha = tbClientes.getSelectedRow();
+            int linha = tbProdutos.getSelectedRow();
 
-            campoID.setText(tbClientes.getValueAt(linha, 0).toString());
-            campoNomeCli.setText(tbClientes.getValueAt(linha, 1).toString());
-            campoCPF.setText(tbClientes.getValueAt(linha, 2).toString());
-            campoEmail.setText(tbClientes.getValueAt(linha, 3).toString());
-            campoTel.setText(tbClientes.getValueAt(linha, 4).toString());
+            campoID.setText(tbProdutos.getValueAt(linha, 0).toString());
+            campoDescricao.setText(tbProdutos.getValueAt(linha, 1).toString());
+            jsQuant.setValue(tbProdutos.getValueAt(linha, 2));
+            campoValor.setText(tbProdutos.getValueAt(linha, 3).toString());
         }
 
-    }//GEN-LAST:event_tbClientesMouseClicked
+    }//GEN-LAST:event_tbProdutosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -366,18 +345,16 @@ public class FormCliente extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnNovo;
     private javax.swing.JToggleButton btnPesq;
     private javax.swing.JToggleButton btnSalvar;
-    private javax.swing.JTextField campoCPF;
-    private javax.swing.JTextField campoEmail;
+    private javax.swing.JTextField campoDescricao;
     private javax.swing.JTextField campoID;
-    private javax.swing.JTextField campoNomeCli;
     private javax.swing.JTextField campoPesq;
-    private javax.swing.JTextField campoTel;
+    private javax.swing.JTextField campoValor;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbCPF;
-    private javax.swing.JLabel lbEmail;
+    private javax.swing.JSpinner jsQuant;
+    private javax.swing.JLabel lbDescricao;
     private javax.swing.JLabel lbID;
-    private javax.swing.JLabel lbNome;
-    private javax.swing.JLabel lbTel;
-    private javax.swing.JTable tbClientes;
+    private javax.swing.JLabel lbQuant;
+    private javax.swing.JLabel lbValor;
+    private javax.swing.JTable tbProdutos;
     // End of variables declaration//GEN-END:variables
 }

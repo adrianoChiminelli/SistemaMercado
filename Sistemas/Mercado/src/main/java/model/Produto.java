@@ -1,5 +1,7 @@
 package model;
 
+import dao.ProdutoDAO;
+
 public class Produto {
 
     private Integer idProduto, quantidadeEstoque;
@@ -52,6 +54,14 @@ public class Produto {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public void salvar(Produto pro) {
+        new ProdutoDAO().insert(pro);
+    }
+
+    public void alterar(Produto pro) {
+         new ProdutoDAO().update(pro);
     }
 
 }

@@ -122,12 +122,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuClienteMouseClicked
-        formCliente frm = new formCliente();
-        abrePainel(frm);
+        FormCliente form = new FormCliente();
+        abrePainel(form);
     }//GEN-LAST:event_menuClienteMouseClicked
 
     private void menuProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProdutoMouseClicked
-
+        FormProduto form = new FormProduto();
+        abrePainel(form);
     }//GEN-LAST:event_menuProdutoMouseClicked
 
     private void menuVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuVendaMouseClicked

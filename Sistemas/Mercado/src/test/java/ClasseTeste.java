@@ -1,5 +1,5 @@
 
-import controller.formClienteController;
+import controller.FormClienteController;
 
 
 
@@ -7,7 +7,7 @@ public class ClasseTeste {
 
     public static void main(String[] args) {
         
-        formClienteController fm = new formClienteController();
+        FormClienteController fm = new FormClienteController();
         
         fm.excluiCliente(0, "Adriano");
 
