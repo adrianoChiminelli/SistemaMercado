@@ -290,18 +290,28 @@ public class FormCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        if ("".equals(campoID.getText())) {
+            JOptionPane.showMessageDialog(null, "Selecione um registro para Alterar", "Erro", 0);
+            return;
+        }
+
         btnSalvar.setText("Alterar");
         ativaCadastro(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         FormClienteController controller = new FormClienteController();
-        int id = Integer.parseInt(campoID.getText());
-        String nome = campoNomeCli.getText();
 
-        boolean sucesso = controller.excluiCliente(id, nome);
-        if (sucesso) {
-            JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!", "Concluido", 4);
+        try {
+            int id = Integer.parseInt(campoID.getText());
+            String nome = campoNomeCli.getText();
+
+            boolean sucesso = controller.excluiCliente(id, nome);
+            if (sucesso) {
+                JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!", "Concluido", 1);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Selecione um registro para Excluir", "Erro", 0);
         }
         atualizaTabela();
         limpaCampos();
@@ -311,23 +321,27 @@ public class FormCliente extends javax.swing.JPanel {
         FormClienteController controller = new FormClienteController();
         boolean sucesso = false;
 
-        String nomeCli = campoNomeCli.getText();
-        String cpf = campoCPF.getText();
-        String email = campoEmail.getText();
-        String tel = campoTel.getText();
+        try {
+            String nomeCli = campoNomeCli.getText();
+            String cpf = campoCPF.getText();
+            String email = campoEmail.getText();
+            String tel = campoTel.getText();
 
-        if ("Salvar".equals(btnSalvar.getText())) {
-            sucesso = controller.salvaCliente(nomeCli, cpf, email, tel);
-        } else {
-            int id = Integer.parseInt(campoID.getText());
-            sucesso = controller.alteraCliente(id, nomeCli, cpf, email, tel);
-        }
-        if (sucesso) {
-            atualizaTabela();
-            limpaCampos();
-            ativaCadastro(false);
-        }
+            if ("Salvar".equals(btnSalvar.getText())) {
+                sucesso = controller.salvaCliente(nomeCli, cpf, email, tel);
+            } else {
+                int id = Integer.parseInt(campoID.getText());
+                sucesso = controller.alteraCliente(id, nomeCli, cpf, email, tel);
+            }
+            if (sucesso) {
+                atualizaTabela();
+                limpaCampos();
+                ativaCadastro(false);
+            }
 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Preencha as informações Corretamente!", "Erro ao cadastrar", 0);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

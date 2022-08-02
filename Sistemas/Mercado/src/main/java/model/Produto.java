@@ -1,6 +1,7 @@
 package model;
 
 import dao.ProdutoDAO;
+import java.util.List;
 
 public class Produto {
 
@@ -62,6 +63,14 @@ public class Produto {
 
     public void alterar(Produto pro) {
          new ProdutoDAO().update(pro);
+    }
+
+    public void delete(int id) {
+        new ProdutoDAO().delete(id);
+    }
+
+    public List<Produto> getListaProduto() {
+        return new ProdutoDAO().findAll();
     }
 
 }

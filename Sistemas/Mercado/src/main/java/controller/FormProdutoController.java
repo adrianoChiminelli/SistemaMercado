@@ -1,6 +1,5 @@
 package controller;
 
-import dao.ProdutoDAO;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -10,8 +9,6 @@ import javax.swing.table.TableModel;
 import model.Produto;
 
 public class FormProdutoController {
-
-    ProdutoDAO dao = new ProdutoDAO();
 
     public boolean salvaProduto(String descricao, int quant, Double valor) {
 
@@ -43,7 +40,7 @@ public class FormProdutoController {
         DefaultTableModel modelo = (DefaultTableModel) tbProdutos.getModel();
         modelo.setRowCount(0);
 
-        List<Produto> listaProduto = dao.findAll();
+        List<Produto> listaProduto = new Produto().getListaProduto();
 
         for (Produto produto : listaProduto) {
             int id = produto.getIdProduto();
@@ -63,7 +60,7 @@ public class FormProdutoController {
         int opcao = JOptionPane.showConfirmDialog(null, "Você está preste a excluir o produto: " + descricao + "\nDeseja continuar?", "Confirmar exclusão", 2, 2);
 
         if (opcao == 0) {
-            dao.delete(id);
+            new Produto().delete(id);
             return true;
         }
 

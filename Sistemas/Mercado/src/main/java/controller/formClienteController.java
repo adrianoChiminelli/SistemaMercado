@@ -1,6 +1,5 @@
 package controller;
 
-import dao.ClienteDAO;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
@@ -12,11 +11,11 @@ import utils.UtilCPF;
 
 public class FormClienteController {
 
-    ClienteDAO dao = new ClienteDAO();
     UtilCPF util = new UtilCPF();
 
     public boolean salvaCliente(String nomeCli, String cpf, String email, String tel) {
-        if (dao.cpfJaCadastrado(cpf)) {
+        Cliente cli = new Cliente();
+        if (cli.cpfJaCadastrado(cpf)) {
             JOptionPane.showMessageDialog(null, "CPF já cadastrador!", "Erro ao cadastrar", 0);
             return false;
         }
@@ -24,7 +23,7 @@ public class FormClienteController {
         if (util.validaCPF(cpf)) {
             if (nomeCli != null && nomeCli.length() > 0 && email != null
                     && cpf.length() > 0 && tel != null && tel.length() > 0) {
-                Cliente cli = new Cliente(nomeCli, cpf, tel, email);
+                cli = new Cliente(nomeCli, cpf, tel, email);
                 cli.salvar(cli);
                 return true;
 
@@ -38,10 +37,11 @@ public class FormClienteController {
     }
 
     public boolean alteraCliente(int id, String nomeCli, String cpf, String email, String tel) {
-        Optional<Cliente> cliente = dao.findById(id);
+       Cliente cli = new Cliente();
+        Optional<Cliente> cliente = cli.getCliente(id);
         String cpfAtual = cliente.get().getCpf();
         
-        if (dao.cpfJaCadastrado(cpf) && !cpfAtual.equals(cpf)) {
+        if (cli.cpfJaCadastrado(cpf) && !cpfAtual.equals(cpf)) {
             JOptionPane.showMessageDialog(null, "CPF já cadastrador!", "Erro ao cadastrar", 0);
             return false;
         }
@@ -49,7 +49,7 @@ public class FormClienteController {
         if (util.validaCPF(cpf)) {
             if (id != 0 && nomeCli != null && nomeCli.length() > 0 && email != null
                     && cpf.length() > 0 && tel != null && tel.length() > 0) {
-                Cliente cli = new Cliente(id, nomeCli, cpf, tel, email);
+                cli = new Cliente(id, nomeCli, cpf, tel, email);
                 cli.alterar(cli);
                 return true;
 
@@ -66,7 +66,7 @@ public class FormClienteController {
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
         modelo.setRowCount(0);
 
-        List<Cliente> listaClientes = dao.findAll();
+        List<Cliente> listaClientes = new Cliente().getListaCliente();
 
         for (Cliente cliente : listaClientes) {
             int id = cliente.getIdCliente();
@@ -87,7 +87,7 @@ public class FormClienteController {
         int opcao = JOptionPane.showConfirmDialog(null, "Você está preste a excluir o cliente: " + nome + "\nDeseja continuar?", "Confirmar exclusão", 2, 2);
 
         if (opcao == 0) {
-            dao.delete(id);
+            new Cliente().delete(id);
             return true;
         }
 

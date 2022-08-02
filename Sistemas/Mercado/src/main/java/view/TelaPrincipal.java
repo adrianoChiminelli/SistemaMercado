@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -23,6 +21,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
             tabPainel.addTab(painel.getName(), painel);
+            tabPainel.setSelectedIndex(tabPainel.getTabCount()-1);
         }
     }
 

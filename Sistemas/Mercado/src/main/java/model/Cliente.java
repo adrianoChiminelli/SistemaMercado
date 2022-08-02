@@ -1,6 +1,8 @@
 package model;
 
 import dao.ClienteDAO;
+import java.util.List;
+import java.util.Optional;
 
 public class Cliente {
 
@@ -71,6 +73,22 @@ public class Cliente {
 
     public void alterar(Cliente cli) {
         new ClienteDAO().update(cli);
+    }
+
+    public boolean cpfJaCadastrado(String cpf) {
+        return new ClienteDAO().cpfJaCadastrado(cpf);
+    }
+
+    public Optional<Cliente> getCliente(int id) {
+        return new ClienteDAO().findById(id);
+    }
+
+    public List<Cliente> getListaCliente() {
+        return new ClienteDAO().findAll();
+    }
+
+    public void delete(int id) {
+        new ClienteDAO().delete(id);
     }
 
 }
