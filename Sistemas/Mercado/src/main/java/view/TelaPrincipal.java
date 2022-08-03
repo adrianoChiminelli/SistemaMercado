@@ -1,12 +1,20 @@
 package view;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    public TelaPrincipal() {
+    public TelaPrincipal(int nvAcesso) {
         initComponents();
-
+        if(nvAcesso == 0){
+            JOptionPane.showMessageDialog(null, "Tente novamente com outro usuario ou contate o\nadministrador do sistema!", "Usuario Inativo!", 1);
+            System.exit(0);
+            
+        } else if (nvAcesso != 2){
+            menuUsuario.setVisible(false);
+            smSQL.setVisible(false);
+        }
     }
 
     public void abrePainel(JPanel painel) {
@@ -135,7 +143,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuVendaMouseClicked
 
     private void menuUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuUsuarioMouseClicked
-        // TODO add your handling code here:
+        FormUsuario form = new FormUsuario();
+        abrePainel(form);
     }//GEN-LAST:event_menuUsuarioMouseClicked
 
     private void smSQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smSQLActionPerformed

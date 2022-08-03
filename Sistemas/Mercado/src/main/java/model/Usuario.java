@@ -1,5 +1,8 @@
 package model;
 
+import dao.UsuarioDAO;
+import java.util.List;
+
 public class Usuario {
 
     private Integer idUsuario, nivelAcesso;
@@ -53,9 +56,21 @@ public class Usuario {
         this.senha = senha;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "idUsuario=" + idUsuario + ", nivelAcesso=" + nivelAcesso + ", nomeUsuario=" + nomeUsuario + ", senha=" + senha + '}';
+
+    public void delete(int id) {
+        new UsuarioDAO().delete(id);
+    }
+
+    public List<Usuario> getListaUsuario() {
+        return new UsuarioDAO().findAll();
+    }
+
+    public void salvar(Usuario user) {
+        new UsuarioDAO().insert(user);
+    }
+
+    public void alterar(Usuario user) {
+        new UsuarioDAO().update(user);
     }
 
 }

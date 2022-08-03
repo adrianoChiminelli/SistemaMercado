@@ -107,9 +107,9 @@ public class UsuarioDAO implements FuncoesDAO<Usuario> {
             Connection conexao = new Conexao().conectar();
             PreparedStatement pstm = conexao.prepareStatement(UPDATE);
             pstm.setString(1, objeto.getNomeUsuario());
-            pstm.setString(2, objeto.getSenha());
+            pstm.setString(2, new Cripto().cripgrafaSenha(objeto.getSenha()));
             pstm.setInt(3, objeto.getNivelAcesso());
-            pstm.setInt(5, objeto.getIdUsuario());
+            pstm.setInt(4, objeto.getIdUsuario());
             
             pstm.execute();
 
@@ -139,6 +139,26 @@ public class UsuarioDAO implements FuncoesDAO<Usuario> {
             JOptionPane.showMessageDialog(null, "Erro ao alterar " + e.getMessage());
         }
         return false;
+    }
+    
+    public int validaNvAcesso(String usuario, String senha){
+         String sql = "SELECT nivel_acesso FROM usuarios WHERE nome_usuario = ?";
+
+        try {
+            Connection conexao = new Conexao().conectar();
+            PreparedStatement pstm = conexao.prepareStatement(sql);
+            pstm.setString(1, usuario);
+
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()){
+                return rs.getInt("nivel_acesso");
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao alterar " + e.getMessage());
+        }
+        return 1;
     }
 
     private Usuario criaUsuario(ResultSet rs) throws SQLException {

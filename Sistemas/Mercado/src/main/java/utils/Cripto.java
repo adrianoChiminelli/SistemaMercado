@@ -14,4 +14,12 @@ public class Cripto {
         return pass.checkPassword(senhaUsuario, senhaCriptografada);
     }
 
+    public static String getSenha(char[] ch) {
+        String senha = "";
+        for (char c : ch) {
+            senha += c;
+        }
+        return senha;
+    }
+
 }

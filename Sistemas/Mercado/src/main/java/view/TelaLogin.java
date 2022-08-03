@@ -2,6 +2,7 @@ package view;
 
 import controller.TelaLoginController;
 import javax.swing.ImageIcon;
+import utils.Cripto;
 
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -136,10 +137,11 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         TelaLoginController controller = new TelaLoginController();
         String usuario = campoUsuario.getText();
-        String senha = getSenha(campoSenha.getPassword());
+        String senha = Cripto.getSenha(campoSenha.getPassword());
 
         if (controller.validaLogin(usuario, senha)) {
-            TelaPrincipal tela = new TelaPrincipal();
+            int nvAcesso = controller.verificaNivelAcesso(usuario, senha);
+            TelaPrincipal tela = new TelaPrincipal(nvAcesso);
             tela.setIconImage(new ImageIcon("/images/IconJanela.png").getImage());
             tela.setVisible(true);
             this.dispose();
@@ -159,14 +161,6 @@ public class TelaLogin extends javax.swing.JFrame {
             btnEntrar.doClick();
         }
     }//GEN-LAST:event_campoUsuarioKeyReleased
-
-    private String getSenha(char[] ch) {
-        String senha = "";
-        for (char c : ch) {
-            senha += c;
-        }
-        return senha;
-    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -2,7 +2,6 @@ package controller;
 
 import dao.UsuarioDAO;
 
-
 public class TelaLoginController {
 
     public boolean validaLogin(String usuario, String senha) {
@@ -10,7 +9,6 @@ public class TelaLoginController {
     }
 
     public int verificaNivelAcesso(String usuario, String senha) {
-        return 0;
+        return new UsuarioDAO().validaNvAcesso(usuario, senha);
     }
-
 }
