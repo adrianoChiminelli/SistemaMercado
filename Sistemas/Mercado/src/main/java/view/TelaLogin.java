@@ -141,7 +141,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         if (controller.validaLogin(usuario, senha)) {
             int nvAcesso = controller.verificaNivelAcesso(usuario, senha);
-            TelaPrincipal tela = new TelaPrincipal(nvAcesso);
+            TelaPrincipal tela = new TelaPrincipal(usuario, nvAcesso);
             tela.setIconImage(new ImageIcon("/images/IconJanela.png").getImage());
             tela.setVisible(true);
             this.dispose();

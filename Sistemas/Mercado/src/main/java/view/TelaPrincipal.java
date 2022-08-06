@@ -4,9 +4,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class TelaPrincipal extends javax.swing.JFrame {
+    private final  String USER;
 
-    public TelaPrincipal(int nvAcesso) {
+    public TelaPrincipal(String usuario, int nvAcesso) {
         initComponents();
+        this.USER = usuario;
+        
         if (nvAcesso == 0) {
             JOptionPane.showMessageDialog(null, "Tente novamente com outro usuario ou contate o\nadministrador do sistema!", "Usuario Inativo!", 1);
             System.exit(0);
@@ -32,6 +35,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tabPainel.setSelectedIndex(tabPainel.getTabCount() - 1);
         }
     }
+    
+    public String getUsuario(){
+        return this.USER;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -45,7 +52,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         menuUsuario = new javax.swing.JMenu();
-        menuAdmin = new javax.swing.JMenu();
+        menuConfig = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         smSQL = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,6 +89,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuVenda.setText("Vendas");
         menuVenda.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
 
+        jMenuItem1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon Compra.png"))); // NOI18N
         jMenuItem1.setText("Nova Venda");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +99,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menuVenda.add(jMenuItem1);
 
+        jMenuItem2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
         jMenuItem2.setText("Consultar Venda");
         menuVenda.add(jMenuItem2);
 
@@ -104,9 +116,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         barraMenu.add(menuUsuario);
 
-        menuAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Config.png"))); // NOI18N
-        menuAdmin.setText("Administrador");
-        menuAdmin.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        menuConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Config.png"))); // NOI18N
+        menuConfig.setText("Configurações");
+        menuConfig.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+
+        jMenuItem3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon Senha.png"))); // NOI18N
+        jMenuItem3.setText("Alterar Senha");
+        menuConfig.add(jMenuItem3);
 
         smSQL.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         smSQL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Chave.png"))); // NOI18N
@@ -116,9 +133,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 smSQLActionPerformed(evt);
             }
         });
-        menuAdmin.add(smSQL);
+        menuConfig.add(smSQL);
 
-        barraMenu.add(menuAdmin);
+        barraMenu.add(menuConfig);
 
         setJMenuBar(barraMenu);
 
@@ -157,7 +174,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_smSQLActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        FormVenda form = new FormVenda();
+        FormVenda form = new FormVenda(USER);
         abrePainel(form);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -165,8 +182,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenu menuAdmin;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu menuCliente;
+    private javax.swing.JMenu menuConfig;
     private javax.swing.JMenu menuProduto;
     private javax.swing.JMenu menuUsuario;
     private javax.swing.JMenu menuVenda;

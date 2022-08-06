@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="formasPagamento">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1280, 678]"/>
@@ -28,88 +32,85 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="800" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lbDescricao2" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbDescricao1" min="-2" pref="76" max="-2" attributes="0"/>
-                          <Component id="lbDescricao" min="-2" pref="76" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jComboBox1" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jToggleButton1" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lbQuantidade" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbCliente" min="-2" pref="76" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="cbCliente" min="-2" pref="380" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btnPesquisarCliente" min="-2" pref="33" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jsQuantidade" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jTextField1" min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="lbProduto" min="-2" pref="76" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="campoIdProduto" min="-2" pref="47" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBox2" min="-2" pref="366" max="-2" attributes="0"/>
+                              <Component id="cbProduto" min="-2" pref="366" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jSpinner1" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       <Component id="btnNovo" min="-2" pref="135" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Component id="jToggleButton2" min="-2" pref="182" max="-2" attributes="0"/>
+                      <Component id="btnAdicionar" min="-2" pref="182" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jToggleButton3" min="-2" pref="182" max="-2" attributes="0"/>
+                      <Component id="btnRemover" min="-2" pref="182" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="800" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <Component id="pFinalVenda" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel1" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnNovo" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jToggleButton1" alignment="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lbDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnNovo" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="btnPesquisarCliente" alignment="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbDescricao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jComboBox2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="lbCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbCliente" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbDescricao2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jSpinner1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jToggleButton2" alignment="3" pref="31" max="32767" attributes="0"/>
-                          <Component id="jToggleButton3" alignment="3" pref="31" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoIdProduto" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="cbProduto" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jsQuantidade" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="lbQuantidade" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAdicionar" alignment="3" max="32767" attributes="0"/>
+                  <Component id="btnRemover" alignment="3" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="416" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
+          <Component id="pFinalVenda" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -134,10 +135,10 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="tbNoveVenda">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="4">
+              <Table columnCount="5" rowCount="0">
                 <Column editable="false" title="ID" type="java.lang.Object"/>
                 <Column editable="false" title="Produto" type="java.lang.Object"/>
                 <Column editable="false" title="Pre&#xe7;o Und." type="java.lang.Object"/>
@@ -181,7 +182,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lbDescricao">
+    <Component class="javax.swing.JLabel" name="lbCliente">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -190,7 +191,7 @@
         <Property name="text" type="java.lang.String" value="Cliente:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbDescricao1">
+    <Component class="javax.swing.JLabel" name="lbProduto">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -199,7 +200,7 @@
         <Property name="text" type="java.lang.String" value="Produto:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbDescricao2">
+    <Component class="javax.swing.JLabel" name="lbQuantidade">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -208,59 +209,73 @@
         <Property name="text" type="java.lang.String" value="Quantidade:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cbCliente">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="campoIdProduto">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="cbProduto">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JSpinner" name="jSpinner1">
+    <Component class="javax.swing.JSpinner" name="jsQuantidade">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+    <Component class="javax.swing.JToggleButton" name="btnPesquisarCliente">
       <Properties>
         <Property name="text" type="java.lang.String" value="..."/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+    <Component class="javax.swing.JToggleButton" name="btnAdicionar">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/Icon ArrowDown.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Adicionar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton3">
+    <Component class="javax.swing.JToggleButton" name="btnRemover">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/icon ArrowUP.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Remover"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="pFinalVenda">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+            <MatteColorBorder bottom="0" left="2" right="0" top="0">
+              <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+            </MatteColorBorder>
+          </Border>
         </Property>
       </Properties>
 
@@ -268,29 +283,121 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                  <Component id="btnNovo2" min="-2" pref="135" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="btnNovo1" min="-2" pref="135" max="-2" attributes="0"/>
-                  <EmptySpace pref="68" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="lbTitulo" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lbVendedor" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="campoVendedor" min="-2" pref="257" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lbNomeCliente" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="lbIdCliente" min="-2" pref="76" max="-2" attributes="0"/>
+                                      <Component id="lbQtdTotal" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="lbValorTotal" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="lbMetPag" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="lbData" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="opCredito" min="-2" max="-2" attributes="0"/>
+                                              <Component id="opVista" min="-2" max="-2" attributes="0"/>
+                                              <Component id="opDebito" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="campoNomeCliente" min="-2" pref="257" max="-2" attributes="0"/>
+                                              <Component id="campoIdCliente" min="-2" pref="257" max="-2" attributes="0"/>
+                                              <Component id="campoQuantidade" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
+                                              <Component id="campoValorTotal" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="campoData" min="-2" pref="170" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="btnSalvar" min="-2" pref="135" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="btnCancelar" min="-2" pref="135" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="lbTitulo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbIdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoIdCliente" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbNomeCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoNomeCliente" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbQtdTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoQuantidade" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbValorTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoValorTotal" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoVendedor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbMetPag" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="opVista" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="opCredito" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="opDebito" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbData" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoData" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnNovo2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnNovo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JToggleButton" name="btnNovo2">
+        <Component class="javax.swing.JToggleButton" name="btnSalvar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/icon OK.png"/>
@@ -300,10 +407,10 @@
             <Property name="iconTextGap" type="int" value="10"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovo2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btnNovo1">
+        <Component class="javax.swing.JToggleButton" name="btnCancelar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/Icon Cancelar.png"/>
@@ -313,8 +420,134 @@
             <Property name="iconTextGap" type="int" value="10"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovo1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbIdCliente">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="ID Cliente:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbNomeCliente">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Nome Cliente:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbQtdTotal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Quantidade:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbValorTotal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Valor Total:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbVendedor">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Vendedor:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbTitulo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="24" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Dados da Venda"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbMetPag">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="M&#xe9;todo Pag.:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="opVista">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="formasPagamento"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xc0; VISTA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="opCredito">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="formasPagamento"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="CR&#xc9;DITO"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="opDebito">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="formasPagamento"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="D&#xc9;BITO"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="campoIdCliente">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="campoNomeCliente">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="campoQuantidade">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="campoValorTotal">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="campoVendedor">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbData">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Data Venda:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="campoData">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

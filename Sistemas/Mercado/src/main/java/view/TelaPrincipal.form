@@ -45,6 +45,12 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="12" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/Icon Compra.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nova Venda"/>
               </Properties>
               <Events>
@@ -53,6 +59,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="12" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/icon Pesquisar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Consultar Venda"/>
               </Properties>
             </MenuItem>
@@ -72,17 +84,28 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuUsuarioMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuAdmin">
+        <Menu class="javax.swing.JMenu" name="menuConfig">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/icon Config.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Administrador"/>
+            <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xf5;es"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="16" style="1"/>
             </Property>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="12" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/Icon Senha.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Alterar Senha"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="smSQL">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
