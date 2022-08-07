@@ -1,15 +1,16 @@
 
-import controller.FormClienteController;
+import java.sql.Timestamp;
+import java.util.Date;
 
 
 
 public class ClasseTeste {
 
     public static void main(String[] args) {
+
+        Date date = new Date();
         
-        FormClienteController fm = new FormClienteController();
-        
-        fm.excluiCliente(0, "Adriano");
+        System.out.println(new Timestamp(date.getTime()));
 
     }
 

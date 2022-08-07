@@ -7,6 +7,11 @@ public class VendaProduto {
     public VendaProduto() {
     }
 
+    public VendaProduto(int idProduto, int quantidade) {
+        this.idProduto = idProduto;
+        this.quantidade = quantidade;
+    }
+
     public VendaProduto(int idProduto, int idVenda, int quantidade) {
         this.idProduto = idProduto;
         this.idVenda = idVenda;
