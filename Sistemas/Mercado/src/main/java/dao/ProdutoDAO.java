@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
 import model.Produto;
+import model.VendaProduto;
 
 public class ProdutoDAO implements FuncoesDAO<Produto> {
 
@@ -28,6 +29,9 @@ public class ProdutoDAO implements FuncoesDAO<Produto> {
     
     private static final String
     UPDATE = "UPDATE produtos SET descricao_produto = ?, quantidade_produto = ?, valor = ? WHERE id_produto = ?";
+    
+    private static final String
+    UPDATE_ESTOQUE = "UPDATE produtos SET quantidade_produto = ? WHERE id_produto = ?";
     
     @Override
     public void insert(Produto objeto) {
@@ -118,6 +122,23 @@ public class ProdutoDAO implements FuncoesDAO<Produto> {
         }
     }
     
+    public void baixarEstoque(List<VendaProduto> listaProdutos) {
+
+        try {
+            Connection conexao = new Conexao().conectar();
+            PreparedStatement pstm = conexao.prepareStatement(UPDATE_ESTOQUE);
+
+            for (VendaProduto vp : listaProdutos) {
+                pstm.setInt(1, vp.getQuantidade());
+                pstm.setInt(2, vp.getIdProduto());
+
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar: " + e.getMessage());
+        }
+    }
+
     private Produto criaProduto(ResultSet rs) throws SQLException {
         int id = rs.getInt("id_produto");
         String descricaoProduto = rs.getString("descricao_produto");
