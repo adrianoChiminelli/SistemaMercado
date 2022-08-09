@@ -75,15 +75,17 @@ public class FormVendaController {
         tabela.setModel(modelo);
     }
 
-    public void salvaVenda(Venda venda, List<VendaProduto> listaProduto) {
+    public boolean salvaVenda(Venda venda, List<VendaProduto> listaProduto) {
 
         if (venda.validaCampos()) {
             if (!listaProduto.isEmpty()) {
                 new Venda().salvaVenda(venda, listaProduto);
-                return;
+                new Produto().baixaEstoque(listaProduto);
+                return true;
             }
         }
         JOptionPane.showMessageDialog(null, "Preencha os dados corretamente.", "Atenção!", 0);
+        return false;
     }
 
 }

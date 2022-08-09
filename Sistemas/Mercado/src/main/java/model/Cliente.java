@@ -91,4 +91,12 @@ public class Cliente {
         new ClienteDAO().delete(id);
     }
 
+    public List<Cliente> getClienteByName(String filtro) {
+        return new ClienteDAO().findByName(filtro);
+    }
+
+    public Optional<Cliente> getClienteByCPF(String filtro) {
+        return new ClienteDAO().findByCPF(filtro);
+    }
+
 }

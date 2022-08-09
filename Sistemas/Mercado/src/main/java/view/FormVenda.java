@@ -1,6 +1,7 @@
 package view;
 
 import controller.FormVendaController;
+import java.awt.Frame;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ public class FormVenda extends javax.swing.JPanel {
         selecaoNomeProduto = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lbErro = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1280, 678));
         setName("Vendas"); // NOI18N
@@ -340,6 +342,15 @@ public class FormVenda extends javax.swing.JPanel {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        lbErro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbErro.setForeground(new java.awt.Color(204, 0, 0));
+        lbErro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -383,7 +394,9 @@ public class FormVenda extends javax.swing.JPanel {
                         .addGap(57, 57, 57)
                         .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(lbErro))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -418,7 +431,8 @@ public class FormVenda extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbErro))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
@@ -428,44 +442,59 @@ public class FormVenda extends javax.swing.JPanel {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         ativaVenda(true);
-
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         ativaVenda(false);
+        limpaCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         FormVendaController vendaController = new FormVendaController();
         StringFormat format = new StringFormat();
 
-        if (!campoIdCliente.getText().equals("") && tbNovaVenda.getRowCount() > 0) {
-            int fkCliente = Integer.parseInt(campoIdCliente.getText());
-            int qtd = Integer.parseInt(campoQuantidade.getText());
-            Double valor = format.realParaDouble(campoValorTotal.getText());
-            String vendedor = campoVendedor.getText();
-            String metodoPagamento = getMetodoPagamento();
-            Date data = new Date();
+        if (!campoIdCliente.getText().equals("")) {
+            if (tbNovaVenda.getRowCount() > 0) {
 
-            Venda venda = new Venda(fkCliente, qtd, valor, vendedor, metodoPagamento, data);
-            List<VendaProduto> listaProduto = getListaProdutos();
-            vendaController.salvaVenda(venda, listaProduto);
-            ativaVenda(false);
+                int fkCliente = Integer.parseInt(campoIdCliente.getText());
+                int qtd = Integer.parseInt(campoQuantidade.getText());
+                Double valor = format.realParaDouble(campoValorTotal.getText());
+                String vendedor = campoVendedor.getText();
+                String metodoPagamento = getMetodoPagamento();
+                Date data = new Date();
+
+                Venda venda = new Venda(fkCliente, qtd, valor, vendedor, metodoPagamento, data);
+                List<VendaProduto> listaProduto = getListaProdutos();
+
+                if (vendaController.salvaVenda(venda, listaProduto)) {
+                    ativaVenda(false);
+                    limpaCampos();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Lista de produtos vazia!", "Atenção!", 0);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum cliente selecionado!", "Atenção!", 0);
         }
+
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void selecaoIdClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_selecaoIdClienteKeyReleased
         if (KeyEvent.VK_ENTER == evt.getKeyCode()) {
-            selecionaCliente();
-            selecaoIdProduto.requestFocusInWindow();
+            if (!selecaoIdCliente.getText().equals("")) {
+                selecionaCliente();
+                selecaoIdProduto.requestFocusInWindow();
+            }
         }
     }//GEN-LAST:event_selecaoIdClienteKeyReleased
 
     private void selecaoIdProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_selecaoIdProdutoKeyReleased
         if (KeyEvent.VK_ENTER == evt.getKeyCode()) {
-            selecionaProduto();
-            jsQuantidade.requestFocusInWindow();
+            if (!selecaoIdProduto.getText().equals("")) {
+                selecionaProduto();
+                jsQuantidade.requestFocusInWindow();
+            }
         }
     }//GEN-LAST:event_selecaoIdProdutoKeyReleased
 
@@ -494,6 +523,11 @@ public class FormVenda extends javax.swing.JPanel {
         atualizaDadosVenda();
     }//GEN-LAST:event_btnRemoverActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAdicionar;
@@ -515,6 +549,7 @@ public class FormVenda extends javax.swing.JPanel {
     private javax.swing.JLabel lbCliente;
     private javax.swing.JLabel lbData;
     private javax.swing.JLabel lbEmEstoque;
+    private javax.swing.JLabel lbErro;
     private javax.swing.JLabel lbEstoque;
     private javax.swing.JLabel lbIdCliente;
     private javax.swing.JLabel lbMetPag;
@@ -556,8 +591,10 @@ public class FormVenda extends javax.swing.JPanel {
             return opVista.getText();
         } else if (opDebito.isSelected()) {
             return opDebito.getText();
-        } else {
+        } else if (opCredito.isSelected()) {
             return opCredito.getText();
+        } else {
+            return "";
         }
     }
 
@@ -569,8 +606,6 @@ public class FormVenda extends javax.swing.JPanel {
         selecaoIdProduto.setEnabled(habilita);
         btnAdicionar.setEnabled(habilita);
         btnRemover.setEnabled(habilita);
-
-        limpaCampos();
         pFinalVenda.setVisible(habilita);
         campoVendedor.setText(usuario);
         SimpleDateFormat formatter = new SimpleDateFormat("dd / MM / yyyy");
@@ -578,18 +613,22 @@ public class FormVenda extends javax.swing.JPanel {
     }
 
     private void limpaCampos() {
-        campoIdCliente.setText("");
-        campoNomeCliente.setText("");
-        campoQuantidade.setText("");
-        campoValorTotal.setText("");
-        campoData.setText("");
-        campoVendedor.setText("");
-        formasPagamento.clearSelection();
-        selecaoIdCliente.setText("");
-        selecaoIdProduto.setText("");
-        selecaoNomeCliente.setText("");
-        selecaoNomeProduto.setText("");
-        jsQuantidade.setValue(0);
+        this.removeAll();
+        this.repaint();
+        this.initComponents();
+//        campoIdCliente.setText("");
+//        campoNomeCliente.setText("");
+//        campoQuantidade.setText("");
+//        campoValorTotal.setText("");
+//        formasPagamento.clearSelection();
+//        selecaoIdCliente.setText("");
+//        selecaoIdProduto.setText("");
+//        selecaoNomeCliente.setText("");
+//        selecaoNomeProduto.setText("");
+//        jsQuantidade.setValue(0);
+//        while (tbNovaVenda.getRowCount() > 0) {
+//            ((DefaultTableModel) tbNovaVenda.getModel()).removeRow(0);
+//        }
     }
 
     private void atualizaDadosVenda() {
@@ -620,29 +659,29 @@ public class FormVenda extends javax.swing.JPanel {
             selecaoNomeCliente.setText(nome);
             campoNomeCliente.setText(nome);
             campoIdCliente.setText(cliente.getIdCliente().toString());
+            lbErro.setText("");
 
         } catch (NoSuchElementException e) {
-            JOptionPane.showMessageDialog(null, "Digite um Id válido ou pesquise por um cliente.", "Atenção!", 2);
+            lbErro.setText("Digite um Id válido ou pesquise por um cliente.");
         }
     }
 
     private void selecionaProduto() {
         FormVendaController vendaController = new FormVendaController();
-        if (!selecaoIdProduto.getText().equals("")) {
-            int id = Integer.parseInt(selecaoIdProduto.getText());
+        int id = Integer.parseInt(selecaoIdProduto.getText());
 
-            try {
-                Optional<Produto> optProduto = vendaController.selecionaProduto(id);
-                Produto produto = optProduto.orElseThrow();
-                String nome = produto.getDescricaoProduto();
-                int qtd = produto.getQuantidadeEstoque();
-                selecaoNomeProduto.setText(nome);
-                lbEstoque.setText("" + qtd);
-                jsQuantidade.setModel(new SpinnerNumberModel(1, 1, qtd, 1));
+        try {
+            Optional<Produto> optProduto = vendaController.selecionaProduto(id);
+            Produto produto = optProduto.orElseThrow();
+            String nome = produto.getDescricaoProduto();
+            int qtd = produto.getQuantidadeEstoque();
+            selecaoNomeProduto.setText(nome);
+            lbEstoque.setText("" + qtd);
+            jsQuantidade.setModel(new SpinnerNumberModel(1, 1, qtd, 1));
+            lbErro.setText("");
 
-            } catch (NoSuchElementException e) {
-                JOptionPane.showMessageDialog(null, "Digite um Id válido ou pesquise por um produto.", "Atenção!", 2);
-            }
+        } catch (NoSuchElementException e) {
+            lbErro.setText("Digite um Id válido ou pesquise por um produto.");
         }
 
     }

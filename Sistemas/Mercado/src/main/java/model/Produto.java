@@ -73,4 +73,8 @@ public class Produto {
         return new ProdutoDAO().findAll();
     }
 
+    public void baixaEstoque(List<VendaProduto> listaProduto) {
+        new ProdutoDAO().baixarEstoque(listaProduto);
+    }
+
 }

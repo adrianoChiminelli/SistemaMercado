@@ -44,7 +44,6 @@ public class VendaProdutoDAO {
                     psProdutos.executeUpdate();
                 }
             }
-            new ProdutoDAO().baixarEstoque(listaProdutos);
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar: " + e.getMessage());

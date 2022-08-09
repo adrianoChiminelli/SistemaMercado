@@ -15,24 +15,18 @@ import model.VendaProduto;
 
 public class ProdutoDAO implements FuncoesDAO<Produto> {
 
-    private static final String
-    INSERT = "INSERT INTO produtos (descricao_produto, quantidade_produto, valor) VALUES (?, ?, ?)";
-    
-    private static final String
-    SELECT_ALL = "SELECT * FROM produtos";
-    
-    private static final String
-    SELECT_BY_ID = "SELECT * FROM produtos WHERE id_produto = ?";
-    
-    private static final String
-    DELETE = "DELETE FROM produtos WHERE id_produto = ?";
-    
-    private static final String
-    UPDATE = "UPDATE produtos SET descricao_produto = ?, quantidade_produto = ?, valor = ? WHERE id_produto = ?";
-    
-    private static final String
-    UPDATE_ESTOQUE = "UPDATE produtos SET quantidade_produto = ? WHERE id_produto = ?";
-    
+    private static final String INSERT = "INSERT INTO produtos (descricao_produto, quantidade_produto, valor) VALUES (?, ?, ?)";
+
+    private static final String SELECT_ALL = "SELECT * FROM produtos";
+
+    private static final String SELECT_BY_ID = "SELECT * FROM produtos WHERE id_produto = ?";
+
+    private static final String DELETE = "DELETE FROM produtos WHERE id_produto = ?";
+
+    private static final String UPDATE = "UPDATE produtos SET descricao_produto = ?, quantidade_produto = ?, valor = ? WHERE id_produto = ?";
+
+    private static final String UPDATE_ESTOQUE = "UPDATE produtos SET quantidade_produto = ? WHERE id_produto = ?";
+
     @Override
     public void insert(Produto objeto) {
 
@@ -42,7 +36,6 @@ public class ProdutoDAO implements FuncoesDAO<Produto> {
             pstm.setString(1, objeto.getDescricaoProduto());
             pstm.setInt(2, objeto.getQuantidadeEstoque());
             pstm.setDouble(3, objeto.getValor());
- 
 
             pstm.execute();
 
@@ -114,29 +107,37 @@ public class ProdutoDAO implements FuncoesDAO<Produto> {
             pstm.setInt(2, objeto.getQuantidadeEstoque());
             pstm.setDouble(3, objeto.getValor());
             pstm.setInt(4, objeto.getIdProduto());
-            
+
             pstm.execute();
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao alterar " + e.getMessage());
         }
     }
-    
+
     public void baixarEstoque(List<VendaProduto> listaProdutos) {
 
-        try {
-            Connection conexao = new Conexao().conectar();
-            PreparedStatement pstm = conexao.prepareStatement(UPDATE_ESTOQUE);
+        Optional<Produto> produtoEstoque;
 
-            for (VendaProduto vp : listaProdutos) {
-                pstm.setInt(1, vp.getQuantidade());
-                pstm.setInt(2, vp.getIdProduto());
+        Connection conexao = new Conexao().conectar();
 
-                pstm.executeUpdate();
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar: " + e.getMessage());
+        for (VendaProduto vp : listaProdutos) {
+            produtoEstoque = findById(vp.getIdProduto());
+
+            produtoEstoque.ifPresent(produto -> {
+                try {
+                    PreparedStatement pstm = conexao.prepareStatement(UPDATE_ESTOQUE);
+                    pstm.setInt(1, (produto.getQuantidadeEstoque() - vp.getQuantidade()));
+                    pstm.setInt(2, vp.getIdProduto());
+
+                    pstm.executeUpdate();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Erro ao salvar: " + e.getMessage());
+                }
+            });
+
         }
+
     }
 
     private Produto criaProduto(ResultSet rs) throws SQLException {

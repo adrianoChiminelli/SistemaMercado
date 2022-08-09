@@ -24,6 +24,12 @@ public class ClienteDAO implements FuncoesDAO<Cliente> {
     SELECT_BY_ID = "SELECT * FROM clientes WHERE id_cliente = ?";
     
     private static final String
+    SELECT_BY_NAME = "SELECT * FROM clientes WHERE nome_cliente = ?";
+    
+    private static final String
+    SELECT_BY_CPF = "SELECT * FROM clientes WHERE cpf = ?";
+    
+    private static final String
     DELETE = "DELETE FROM clientes WHERE id_cliente = ?";
     
     private static final String
@@ -147,4 +153,47 @@ public class ClienteDAO implements FuncoesDAO<Cliente> {
         return new Cliente(id, nome, cpf, telefone, email);
     }
 
+    public List<Cliente> findByName(String filtro) {
+        List<Cliente> listaCliente = new ArrayList<>();
+
+        try {
+            Connection conexao = new Conexao().conectar();
+            PreparedStatement pstm = conexao.prepareStatement(SELECT_BY_NAME);
+            
+            pstm.setString(1, filtro);
+            
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                listaCliente.add(criaCliente(rs));
+            }
+
+            return listaCliente;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro " + e.getMessage());
+        }
+        return listaCliente;
+    }
+
+    public Optional<Cliente> findByCPF(String filtro) {
+        try {
+            Connection conexao = new Conexao().conectar();
+            PreparedStatement pstm = conexao.prepareStatement(SELECT_BY_CPF);
+            pstm.setString(1, filtro);
+
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                return Optional.of(criaCliente(rs));
+            } else {
+                return Optional.empty();
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro " + e.getMessage());
+        }
+        return Optional.empty();
+    }
 }
+
+
