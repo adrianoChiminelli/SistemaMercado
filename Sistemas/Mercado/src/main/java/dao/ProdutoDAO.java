@@ -21,6 +21,8 @@ public class ProdutoDAO implements FuncoesDAO<Produto> {
 
     private static final String SELECT_BY_ID = "SELECT * FROM produtos WHERE id_produto = ?";
 
+    private static final String SELECT_BY_NAME = "SELECT * FROM produtos WHERE descricao_produto LIKE ?";
+
     private static final String DELETE = "DELETE FROM produtos WHERE id_produto = ?";
 
     private static final String UPDATE = "UPDATE produtos SET descricao_produto = ?, quantidade_produto = ?, valor = ? WHERE id_produto = ?";
@@ -147,6 +149,27 @@ public class ProdutoDAO implements FuncoesDAO<Produto> {
         Double valor = rs.getDouble("valor");
 
         return new Produto(id, descricaoProduto, quantidadeEstoque, valor);
+    }
+
+    public List<Produto> findByName(String filtro) {
+        List<Produto> listaProduto = new ArrayList<>();
+        
+        try {
+            Connection conexao = new Conexao().conectar();
+            PreparedStatement pstm = conexao.prepareStatement(SELECT_BY_NAME);
+            pstm.setString(1, "%" + filtro + "%");
+
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                listaProduto.add(criaProduto(rs));
+            }
+            
+            return listaProduto;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro " + e.getMessage());
+        }
+        return listaProduto;
     }
 
 }

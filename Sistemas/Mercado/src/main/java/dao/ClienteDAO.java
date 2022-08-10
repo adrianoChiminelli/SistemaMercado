@@ -24,10 +24,10 @@ public class ClienteDAO implements FuncoesDAO<Cliente> {
     SELECT_BY_ID = "SELECT * FROM clientes WHERE id_cliente = ?";
     
     private static final String
-    SELECT_BY_NAME = "SELECT * FROM clientes WHERE nome_cliente = ?";
+    SELECT_BY_NAME = "SELECT * FROM clientes WHERE nome_cliente LIKE ?";
     
     private static final String
-    SELECT_BY_CPF = "SELECT * FROM clientes WHERE cpf = ?";
+    SELECT_BY_CPF = "SELECT * FROM clientes WHERE cpf LIKE  ?";
     
     private static final String
     DELETE = "DELETE FROM clientes WHERE id_cliente = ?";
@@ -160,7 +160,7 @@ public class ClienteDAO implements FuncoesDAO<Cliente> {
             Connection conexao = new Conexao().conectar();
             PreparedStatement pstm = conexao.prepareStatement(SELECT_BY_NAME);
             
-            pstm.setString(1, filtro);
+            pstm.setString(1, "%"+filtro+"%");
             
             ResultSet rs = pstm.executeQuery();
 
@@ -180,7 +180,7 @@ public class ClienteDAO implements FuncoesDAO<Cliente> {
         try {
             Connection conexao = new Conexao().conectar();
             PreparedStatement pstm = conexao.prepareStatement(SELECT_BY_CPF);
-            pstm.setString(1, filtro);
+            pstm.setString(1, "%"+filtro+"%");
 
             ResultSet rs = pstm.executeQuery();
 

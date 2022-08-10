@@ -2,6 +2,7 @@ package model;
 
 import dao.ProdutoDAO;
 import java.util.List;
+import java.util.Optional;
 
 public class Produto {
 
@@ -75,6 +76,14 @@ public class Produto {
 
     public void baixaEstoque(List<VendaProduto> listaProduto) {
         new ProdutoDAO().baixarEstoque(listaProduto);
+    }
+
+    public Optional<Produto> getProduto(int id) {
+        return new ProdutoDAO().findById(id);
+    }
+
+    public List<Produto> getProdutoByName(String filtro) {
+        return new ProdutoDAO().findByName(filtro);
     }
 
 }

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import model.Cliente;
@@ -340,6 +341,11 @@ public class FormVenda extends javax.swing.JPanel {
         selecaoNomeProduto.setPreferredSize(new java.awt.Dimension(64, 30));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -524,9 +530,19 @@ public class FormVenda extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        TelaPesquisaCliente tela = new TelaPesquisaCliente(new JFrame(), true);
+        tela.setVisible(true);
 
-        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TelaPesquisaProduto tela = new TelaPesquisaProduto(new JFrame(), true);
+        tela.setVisible(true);
+        if (TelaPesquisaProduto.produto != null) {
+            selecaoIdProduto.setText(TelaPesquisaProduto.produto.getIdProduto().toString());
+            selecaoNomeProduto.setText(TelaPesquisaProduto.produto.getDescricaoProduto());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -616,19 +632,6 @@ public class FormVenda extends javax.swing.JPanel {
         this.removeAll();
         this.repaint();
         this.initComponents();
-//        campoIdCliente.setText("");
-//        campoNomeCliente.setText("");
-//        campoQuantidade.setText("");
-//        campoValorTotal.setText("");
-//        formasPagamento.clearSelection();
-//        selecaoIdCliente.setText("");
-//        selecaoIdProduto.setText("");
-//        selecaoNomeCliente.setText("");
-//        selecaoNomeProduto.setText("");
-//        jsQuantidade.setValue(0);
-//        while (tbNovaVenda.getRowCount() > 0) {
-//            ((DefaultTableModel) tbNovaVenda.getModel()).removeRow(0);
-//        }
     }
 
     private void atualizaDadosVenda() {

@@ -4,11 +4,13 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.table.DefaultTableModel;
-import model.Cliente;
+import model.Produto;
 
-public class TelaPesquisaCliente extends javax.swing.JDialog {
+public class TelaPesquisaProduto extends javax.swing.JDialog {
 
-    public TelaPesquisaCliente(javax.swing.JFrame frame, boolean modal) {
+    public static Produto produto;
+
+    public TelaPesquisaProduto(javax.swing.JFrame frame, boolean modal) {
         super(frame, modal);
         initComponents();
     }
@@ -18,7 +20,7 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbClientes = new javax.swing.JTable();
+        tbProdutos = new javax.swing.JTable();
         campoPesquisa = new javax.swing.JTextField();
         cbOpcao = new javax.swing.JComboBox<>();
         lbCampo = new javax.swing.JLabel();
@@ -28,23 +30,28 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        tbClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tbProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome Cliente", "CPF", "E-mail", "Tel."
+                "ID", "Descrição", "Quantidade", "Preço"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbClientes);
+        tbProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProdutosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbProdutos);
 
         campoPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -52,7 +59,7 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
             }
         });
 
-        cbOpcao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nome", "CPF" }));
+        cbOpcao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Descrição" }));
         cbOpcao.setToolTipText("");
 
         lbCampo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -114,26 +121,22 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
         if (!"".equals(campoPesquisa.getText())) {
             limpaTabela();
             String filtro = campoPesquisa.getText();
-            Optional<Cliente> cliente;
+            Optional<Produto> produto;
 
             switch (cbOpcao.getSelectedIndex()) {
                 case 0 -> {
                     try {
-                        cliente = new Cliente().getCliente(Integer.parseInt(filtro));
-                        cliente.ifPresent(cli -> montaTabela(cli));
+                        produto = new Produto().getProduto(Integer.parseInt(filtro));
+                        produto.ifPresent(pro -> montaTabela(pro));
                     } catch (NumberFormatException e) {
                         lbErro.setText("ID inválido, tente novamente!");
                     }
                 }
                 case 1 -> {
-                    List<Cliente> clientes = new Cliente().getClienteByName(filtro);
-                    for (Cliente cli : clientes) {
-                        montaTabela(cli);
+                    List<Produto> produtos = new Produto().getProdutoByName(filtro);
+                    for (Produto pro : produtos) {
+                        montaTabela(pro);
                     }
-                }
-                case 2 -> {
-                    cliente = new Cliente().getClienteByCPF(filtro);
-                    cliente.ifPresent(cli -> montaTabela(cli));
                 }
                 default -> {
                 }
@@ -142,24 +145,37 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
 
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
-    private void montaTabela(Cliente cliente) {
-        DefaultTableModel modelo = (DefaultTableModel) tbClientes.getModel();
+    private void tbProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProdutosMouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+            evt.consume();
+            int linha = tbProdutos.getSelectedRow();
+            int id = (int) tbProdutos.getValueAt(linha, 0);
+            String descricao = tbProdutos.getValueAt(linha, 1).toString();
+            int qtd = (int) tbProdutos.getValueAt(linha, 2);
+            Double valor = (Double) tbProdutos.getValueAt(linha, 3);
 
-        int id = cliente.getIdCliente();
-        String nomeCli = cliente.getNomeCliente();
-        String cpf = cliente.getCpf();
-        String email = cliente.getEmail();
-        String tel = cliente.getTelefone();
+            produto = new Produto(id, descricao, qtd, valor);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tbProdutosMouseClicked
 
-        modelo.addRow(new Object[]{id, nomeCli, cpf, email, tel});
+    private void montaTabela(Produto produto) {
+        DefaultTableModel modelo = (DefaultTableModel) tbProdutos.getModel();
 
-        tbClientes.setModel(modelo);
+        int id = produto.getIdProduto();
+        String descricao = produto.getDescricaoProduto();
+        int qtd = produto.getQuantidadeEstoque();
+        Double preco = produto.getValor();
+
+        modelo.addRow(new Object[]{id, descricao, qtd, preco});
+
+        tbProdutos.setModel(modelo);
     }
 
     private void limpaTabela() {
         lbErro.setText("");
-        while (tbClientes.getRowCount() > 0) {
-            ((DefaultTableModel) tbClientes.getModel()).removeRow(0);
+        while (tbProdutos.getRowCount() > 0) {
+            ((DefaultTableModel) tbProdutos.getModel()).removeRow(0);
         }
     }
 
@@ -171,6 +187,6 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
     private javax.swing.JLabel lbCampo;
     private javax.swing.JLabel lbErro;
     private javax.swing.JLabel lbPesquisa;
-    private javax.swing.JTable tbClientes;
+    private javax.swing.JTable tbProdutos;
     // End of variables declaration//GEN-END:variables
 }
