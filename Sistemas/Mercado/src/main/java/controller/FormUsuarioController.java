@@ -6,7 +6,6 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import model.Produto;
 import model.Usuario;
 
 public class FormUsuarioController {

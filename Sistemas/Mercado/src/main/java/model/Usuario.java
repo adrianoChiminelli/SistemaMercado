@@ -73,4 +73,8 @@ public class Usuario {
         new UsuarioDAO().update(user);
     }
 
+    public boolean trocaSenha(String usuario, String senha) {
+        return !new UsuarioDAO().changePassword(usuario, senha);
+    }
+
 }

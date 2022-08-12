@@ -1,5 +1,6 @@
 package view;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -16,7 +17,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         } else if (nvAcesso != 2) {
             menuUsuario.setVisible(false);
-            smSQL.setVisible(false);
         }
     }
 
@@ -49,12 +49,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuCliente = new javax.swing.JMenu();
         menuProduto = new javax.swing.JMenu();
         menuVenda = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        miNovaVenda = new javax.swing.JMenuItem();
+        miConsultaVenda = new javax.swing.JMenuItem();
         menuUsuario = new javax.swing.JMenu();
         menuConfig = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        smSQL = new javax.swing.JMenuItem();
+        miNovaSenha = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Market System");
@@ -89,20 +88,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuVenda.setText("Vendas");
         menuVenda.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
 
-        jMenuItem1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon Compra.png"))); // NOI18N
-        jMenuItem1.setText("Nova Venda");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        miNovaVenda.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        miNovaVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon Compra.png"))); // NOI18N
+        miNovaVenda.setText("Nova Venda");
+        miNovaVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                miNovaVendaActionPerformed(evt);
             }
         });
-        menuVenda.add(jMenuItem1);
+        menuVenda.add(miNovaVenda);
 
-        jMenuItem2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
-        jMenuItem2.setText("Consultar Venda");
-        menuVenda.add(jMenuItem2);
+        miConsultaVenda.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        miConsultaVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
+        miConsultaVenda.setText("Consultar Venda");
+        menuVenda.add(miConsultaVenda);
 
         barraMenu.add(menuVenda);
 
@@ -120,20 +119,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuConfig.setText("Configurações");
         menuConfig.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
 
-        jMenuItem3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon Senha.png"))); // NOI18N
-        jMenuItem3.setText("Alterar Senha");
-        menuConfig.add(jMenuItem3);
-
-        smSQL.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        smSQL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Chave.png"))); // NOI18N
-        smSQL.setText("Editor SQL");
-        smSQL.addActionListener(new java.awt.event.ActionListener() {
+        miNovaSenha.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        miNovaSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon Senha.png"))); // NOI18N
+        miNovaSenha.setText("Alterar Senha");
+        miNovaSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                smSQLActionPerformed(evt);
+                miNovaSenhaActionPerformed(evt);
             }
         });
-        menuConfig.add(smSQL);
+        menuConfig.add(miNovaSenha);
 
         barraMenu.add(menuConfig);
 
@@ -169,26 +163,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         abrePainel(form);
     }//GEN-LAST:event_menuUsuarioMouseClicked
 
-    private void smSQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smSQLActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_smSQLActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void miNovaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNovaVendaActionPerformed
         FormVenda form = new FormVenda(USER);
         abrePainel(form);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_miNovaVendaActionPerformed
+
+    private void miNovaSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNovaSenhaActionPerformed
+        DialogAlteraSenha tela = new DialogAlteraSenha(new JFrame() , true, USER);
+        tela.setVisible(true);
+    }//GEN-LAST:event_miNovaSenhaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu menuCliente;
     private javax.swing.JMenu menuConfig;
     private javax.swing.JMenu menuProduto;
     private javax.swing.JMenu menuUsuario;
     private javax.swing.JMenu menuVenda;
-    private javax.swing.JMenuItem smSQL;
+    private javax.swing.JMenuItem miConsultaVenda;
+    private javax.swing.JMenuItem miNovaSenha;
+    private javax.swing.JMenuItem miNovaVenda;
     private javax.swing.JTabbedPane tabPainel;
     // End of variables declaration//GEN-END:variables
 }

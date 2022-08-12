@@ -1,7 +1,9 @@
 package view;
 
 import controller.FormProdutoController;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FormProduto extends javax.swing.JPanel {
 
@@ -51,7 +53,6 @@ public class FormProduto extends javax.swing.JPanel {
         campoValor = new javax.swing.JTextField();
         lbDescricao = new javax.swing.JLabel();
         lbQuant = new javax.swing.JLabel();
-        campoPesq = new javax.swing.JTextField();
         lbValor = new javax.swing.JLabel();
         btnNovo = new javax.swing.JToggleButton();
         btnAlterar = new javax.swing.JToggleButton();
@@ -60,6 +61,7 @@ public class FormProduto extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(1280, 678));
         setName("Produtos"); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,7 +88,16 @@ public class FormProduto extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbProdutos);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 19, 753, 592));
+
         btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
+        btnPesq.setText("Pesquisar");
+        btnPesq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqActionPerformed(evt);
+            }
+        });
+        add(btnPesq, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 623, 147, 36));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon OK.png"))); // NOI18N
         btnSalvar.setText("Salvar");
@@ -98,8 +109,10 @@ public class FormProduto extends javax.swing.JPanel {
                 btnSalvarActionPerformed(evt);
             }
         });
+        add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 342, 136, -1));
 
         campoID.setEditable(false);
+        add(campoID, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 33, 81, 30));
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon Cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -111,30 +124,36 @@ public class FormProduto extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 342, 134, -1));
 
         campoDescricao.setEditable(false);
+        add(campoDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 81, 373, 30));
 
         lbID.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbID.setText("ID");
+        add(lbID, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 40, -1, -1));
 
         jsQuant.setEnabled(false);
+        add(jsQuant, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 129, 94, 30));
 
         campoValor.setEditable(false);
+        add(campoValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 177, 112, 30));
 
         lbDescricao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbDescricao.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbDescricao.setText("Descricao");
+        add(lbDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 88, -1, -1));
 
         lbQuant.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbQuant.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbQuant.setText("Quant.");
-
-        campoPesq.setText("Pesquisar");
+        add(lbQuant, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 136, -1, -1));
 
         lbValor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbValor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbValor.setText("Valor");
+        add(lbValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 184, -1, -1));
 
         btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconAdicionar.png"))); // NOI18N
         btnNovo.setText("Novo");
@@ -145,6 +164,7 @@ public class FormProduto extends javax.swing.JPanel {
                 btnNovoActionPerformed(evt);
             }
         });
+        add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 623, 119, -1));
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Lista.png"))); // NOI18N
         btnAlterar.setText("Alterar");
@@ -154,6 +174,7 @@ public class FormProduto extends javax.swing.JPanel {
                 btnAlterarActionPerformed(evt);
             }
         });
+        add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 623, 119, -1));
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Lixo.png"))); // NOI18N
         btnExcluir.setText("Excluir");
@@ -163,6 +184,7 @@ public class FormProduto extends javax.swing.JPanel {
                 btnExcluirActionPerformed(evt);
             }
         });
+        add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 623, 119, -1));
 
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Limpar.png"))); // NOI18N
         btnLimpar.setHideActionText(true);
@@ -173,96 +195,7 @@ public class FormProduto extends javax.swing.JPanel {
                 btnLimparActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbID)
-                            .addComponent(lbDescricao)
-                            .addComponent(lbQuant))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jsQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(lbValor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(campoPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbID))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbDescricao))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbQuant)
-                            .addComponent(jsQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(campoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbValor)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(btnLimpar)))
-                        .addGap(135, 135, 135)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSalvar)
-                            .addComponent(btnCancelar)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnNovo)
-                        .addComponent(btnAlterar)
-                        .addComponent(btnExcluir)))
-                .addGap(19, 19, 19))
-        );
+        add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 162, 40, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -336,6 +269,20 @@ public class FormProduto extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tbProdutosMouseClicked
 
+    private void btnPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqActionPerformed
+        TelaPesquisaProduto tela = new TelaPesquisaProduto(new JFrame(), true);
+        tela.setVisible(true);
+        if (TelaPesquisaProduto.produto != null) {
+            for (int linha = 0; linha < tbProdutos.getRowCount(); linha++) {
+                int id = (int) tbProdutos.getValueAt(linha, 0);
+                if (TelaPesquisaProduto.produto.getIdProduto() == id) {
+                    tbProdutos.setRowSelectionInterval(linha, linha);
+                    break;
+                }
+            }
+        }
+    }//GEN-LAST:event_btnPesqActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAlterar;
@@ -347,7 +294,6 @@ public class FormProduto extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnSalvar;
     private javax.swing.JTextField campoDescricao;
     private javax.swing.JTextField campoID;
-    private javax.swing.JTextField campoPesq;
     private javax.swing.JTextField campoValor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jsQuant;

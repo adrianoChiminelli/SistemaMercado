@@ -1,6 +1,7 @@
 package view;
 
 import controller.FormClienteController;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import utils.UtilCPF;
 
@@ -55,7 +56,6 @@ public class FormCliente extends javax.swing.JPanel {
         lbNome = new javax.swing.JLabel();
         campoTel = new javax.swing.JTextField();
         lbCPF = new javax.swing.JLabel();
-        campoPesq = new javax.swing.JTextField();
         lbEmail = new javax.swing.JLabel();
         btnNovo = new javax.swing.JToggleButton();
         lbTel = new javax.swing.JLabel();
@@ -65,6 +65,7 @@ public class FormCliente extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(1280, 678));
         setName("Clientes"); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,7 +92,16 @@ public class FormCliente extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbClientes);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 25, 753, 580));
+
         btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
+        btnPesq.setText("Pesquisar");
+        btnPesq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqActionPerformed(evt);
+            }
+        });
+        add(btnPesq, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 623, 148, 36));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon OK.png"))); // NOI18N
         btnSalvar.setText("Salvar");
@@ -103,8 +113,10 @@ public class FormCliente extends javax.swing.JPanel {
                 btnSalvarActionPerformed(evt);
             }
         });
+        add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 342, 136, -1));
 
         campoID.setEditable(false);
+        add(campoID, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 39, 81, 30));
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon Cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -116,12 +128,15 @@ public class FormCliente extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 342, 134, -1));
 
         campoNomeCli.setEditable(false);
+        add(campoNomeCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 87, 373, 30));
 
         lbID.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbID.setText("ID");
+        add(lbID, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 46, -1, -1));
 
         campoCPF.setEditable(false);
         campoCPF.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -129,24 +144,28 @@ public class FormCliente extends javax.swing.JPanel {
                 campoCPFFocusLost(evt);
             }
         });
+        add(campoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 135, 234, 30));
 
         campoEmail.setEditable(false);
+        add(campoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 183, 373, 30));
 
         lbNome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbNome.setText("Nome");
+        add(lbNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 94, -1, -1));
 
         campoTel.setEditable(false);
+        add(campoTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 231, 234, 30));
 
         lbCPF.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbCPF.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbCPF.setText("CPF");
-
-        campoPesq.setText("Pesquisar");
+        add(lbCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 142, -1, -1));
 
         lbEmail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbEmail.setText("E-mail");
+        add(lbEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 190, -1, -1));
 
         btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconAdicionar.png"))); // NOI18N
         btnNovo.setText("Novo");
@@ -157,10 +176,12 @@ public class FormCliente extends javax.swing.JPanel {
                 btnNovoActionPerformed(evt);
             }
         });
+        add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 623, 119, -1));
 
         lbTel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbTel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbTel.setText("Tel.");
+        add(lbTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 238, -1, -1));
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Lista.png"))); // NOI18N
         btnAlterar.setText("Alterar");
@@ -170,6 +191,7 @@ public class FormCliente extends javax.swing.JPanel {
                 btnAlterarActionPerformed(evt);
             }
         });
+        add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 623, 119, -1));
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Lixo.png"))); // NOI18N
         btnExcluir.setText("Excluir");
@@ -179,6 +201,7 @@ public class FormCliente extends javax.swing.JPanel {
                 btnExcluirActionPerformed(evt);
             }
         });
+        add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 623, 119, -1));
 
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Limpar.png"))); // NOI18N
         btnLimpar.setHideActionText(true);
@@ -189,98 +212,7 @@ public class FormCliente extends javax.swing.JPanel {
                 btnLimparActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbID)
-                            .addComponent(lbNome)
-                            .addComponent(lbCPF)
-                            .addComponent(lbEmail)
-                            .addComponent(lbTel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(campoTel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(campoPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbID))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbNome))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbCPF))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbEmail))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(campoTel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbTel))
-                            .addComponent(btnLimpar))
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSalvar)
-                            .addComponent(btnCancelar)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnNovo)
-                        .addComponent(btnAlterar)
-                        .addComponent(btnExcluir)))
-                .addGap(19, 19, 19))
-        );
+        add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 231, 40, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -371,6 +303,20 @@ public class FormCliente extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tbClientesMouseClicked
 
+    private void btnPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqActionPerformed
+        TelaPesquisaCliente tela = new TelaPesquisaCliente(new JFrame(), true);
+        tela.setVisible(true);
+        if (TelaPesquisaCliente.cliente != null) {
+            for (int linha = 0; linha < tbClientes.getRowCount(); linha++) {
+                int id = (int) tbClientes.getValueAt(linha, 0);
+                if (TelaPesquisaCliente.cliente.getIdCliente()== id) {
+                    tbClientes.setRowSelectionInterval(linha, linha);
+                    break;
+                }
+            }
+        }
+    }//GEN-LAST:event_btnPesqActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAlterar;
@@ -384,7 +330,6 @@ public class FormCliente extends javax.swing.JPanel {
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoID;
     private javax.swing.JTextField campoNomeCli;
-    private javax.swing.JTextField campoPesq;
     private javax.swing.JTextField campoTel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbCPF;

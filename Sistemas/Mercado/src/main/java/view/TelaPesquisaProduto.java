@@ -29,6 +29,7 @@ public class TelaPesquisaProduto extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -53,61 +54,33 @@ public class TelaPesquisaProduto extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbProdutos);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 171, 598, 370));
+
         campoPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoPesquisaKeyReleased(evt);
             }
         });
+        getContentPane().add(campoPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 121, 598, 32));
 
         cbOpcao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Descrição" }));
         cbOpcao.setToolTipText("");
+        getContentPane().add(cbOpcao, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 50, 215, 30));
 
         lbCampo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbCampo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbCampo.setText("Campo:");
+        getContentPane().add(lbCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 27, 113, -1));
 
         lbPesquisa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbPesquisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbPesquisa.setText("Pesquisar por:");
+        getContentPane().add(lbPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 98, 113, -1));
 
         lbErro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbErro.setForeground(new java.awt.Color(204, 0, 0));
         lbErro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(184, 184, 184)
-                        .addComponent(lbErro, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cbOpcao, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
-                    .addComponent(campoPesquisa))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lbCampo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbOpcao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbPesquisa)
-                    .addComponent(lbErro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        getContentPane().add(lbErro, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 98, 283, -1));
 
         pack();
         setLocationRelativeTo(null);

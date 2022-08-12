@@ -65,6 +65,7 @@ public class FormUsuario extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(1280, 678));
         setName("Usuarios"); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,7 +92,10 @@ public class FormUsuario extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbUsuarios);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 25, 753, 592));
+
         btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
+        add(btnPesq, new org.netbeans.lib.awtextra.AbsoluteConstraints(1221, 630, -1, 29));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon OK.png"))); // NOI18N
         btnSalvar.setText("Salvar");
@@ -103,8 +107,10 @@ public class FormUsuario extends javax.swing.JPanel {
                 btnSalvarActionPerformed(evt);
             }
         });
+        add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 136, -1));
 
         campoID.setEditable(false);
+        add(campoID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 39, 81, 30));
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon Cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -116,26 +122,33 @@ public class FormUsuario extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 134, -1));
 
         campoUsuario.setEditable(false);
+        add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 87, 305, 30));
 
         lbID.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbID.setText("ID");
+        add(lbID, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 46, -1, -1));
 
         lbUsuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbUsuario.setText("Usuario");
+        add(lbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 94, -1, -1));
 
         lbSenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbSenha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbSenha.setText("Senha");
+        add(lbSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 140, -1, -1));
 
         campoPesq.setText("Pesquisar");
+        add(campoPesq, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 630, 265, 29));
 
         lbConfSenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbConfSenha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbConfSenha.setText("Conf. Senha");
+        add(lbConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 187, -1, -1));
 
         btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconAdicionar.png"))); // NOI18N
         btnNovo.setText("Novo");
@@ -146,10 +159,12 @@ public class FormUsuario extends javax.swing.JPanel {
                 btnNovoActionPerformed(evt);
             }
         });
+        add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 623, 119, -1));
 
         lbNvAcesso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbNvAcesso.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbNvAcesso.setText("Nv. Acesso");
+        add(lbNvAcesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Lista.png"))); // NOI18N
         btnAlterar.setText("Alterar");
@@ -159,6 +174,7 @@ public class FormUsuario extends javax.swing.JPanel {
                 btnAlterarActionPerformed(evt);
             }
         });
+        add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 623, 119, -1));
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Lixo.png"))); // NOI18N
         btnExcluir.setText("Excluir");
@@ -168,6 +184,7 @@ public class FormUsuario extends javax.swing.JPanel {
                 btnExcluirActionPerformed(evt);
             }
         });
+        add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 623, 119, -1));
 
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Limpar.png"))); // NOI18N
         btnLimpar.setHideActionText(true);
@@ -178,110 +195,19 @@ public class FormUsuario extends javax.swing.JPanel {
                 btnLimparActionPerformed(evt);
             }
         });
+        add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 40, -1));
 
         cbNvAcesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inativo", "Padrão", "Admin" }));
         cbNvAcesso.setEnabled(false);
+        add(cbNvAcesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 143, 34));
 
         campoSenha.setEditable(false);
         campoSenha.setPreferredSize(new java.awt.Dimension(90, 30));
+        add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 135, 305, 30));
 
         campoConfSenha.setEditable(false);
         campoConfSenha.setPreferredSize(new java.awt.Dimension(90, 30));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbID)
-                                    .addComponent(lbUsuario)
-                                    .addComponent(lbSenha)
-                                    .addComponent(lbConfSenha)
-                                    .addComponent(lbNvAcesso))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(campoUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                                        .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(campoConfSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(cbNvAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(campoPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbID))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbUsuario))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbSenha)
-                            .addComponent(campoSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbConfSenha)
-                            .addComponent(campoConfSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbNvAcesso)
-                            .addComponent(cbNvAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addComponent(btnLimpar)
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSalvar)
-                            .addComponent(btnCancelar)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnNovo)
-                        .addComponent(btnAlterar)
-                        .addComponent(btnExcluir)))
-                .addGap(19, 19, 19))
-        );
+        add(campoConfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 305, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed

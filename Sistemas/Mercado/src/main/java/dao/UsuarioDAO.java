@@ -30,6 +30,9 @@ public class UsuarioDAO implements FuncoesDAO<Usuario> {
     private static final String
     UPDATE = "UPDATE usuarios SET nome_usuario = ?, senha = ?, nivel_acesso = ? WHERE id_usuario = ?";
     
+    private static final String
+    CHANGE_PASSWORD = "UPDATE usuarios SET senha = ?  WHERE nome_usuario = ?";
+    
     @Override
     public void insert(Usuario objeto) {
                 
@@ -159,6 +162,21 @@ public class UsuarioDAO implements FuncoesDAO<Usuario> {
             JOptionPane.showMessageDialog(null, "Erro ao alterar " + e.getMessage());
         }
         return 1;
+    }
+    
+     public boolean changePassword(String usuario, String senha) {
+        try {
+            Connection conexao = new Conexao().conectar();
+            PreparedStatement pstm = conexao.prepareStatement(CHANGE_PASSWORD);
+            pstm.setString(1, new Cripto().cripgrafaSenha(senha));
+            pstm.setString(2, usuario);
+            
+            return pstm.execute();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao alterar " + e.getMessage());
+        }
+        return false;
     }
 
     private Usuario criaUsuario(ResultSet rs) throws SQLException {
