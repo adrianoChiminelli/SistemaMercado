@@ -61,7 +61,7 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
                 campoPesquisaKeyReleased(evt);
             }
         });
-        getContentPane().add(campoPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 121, 598, 32));
+        getContentPane().add(campoPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 121, 280, 32));
 
         cbOpcao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nome", "CPF" }));
         cbOpcao.setToolTipText("");

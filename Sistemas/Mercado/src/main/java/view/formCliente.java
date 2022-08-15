@@ -1,6 +1,6 @@
 package view;
 
-import controller.FormClienteController;
+import controller.ClienteController;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import utils.UtilCPF;
@@ -13,7 +13,7 @@ public class FormCliente extends javax.swing.JPanel {
     }
 
     private void atualizaTabela() {
-        FormClienteController controller = new FormClienteController();
+        ClienteController controller = new ClienteController();
         tbClientes.setModel(controller.montarTabela(tbClientes));
     }
 
@@ -232,7 +232,7 @@ public class FormCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        FormClienteController controller = new FormClienteController();
+        ClienteController controller = new ClienteController();
 
         try {
             int id = Integer.parseInt(campoID.getText());
@@ -250,7 +250,7 @@ public class FormCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        FormClienteController controller = new FormClienteController();
+        ClienteController controller = new ClienteController();
         boolean sucesso = false;
 
         try {

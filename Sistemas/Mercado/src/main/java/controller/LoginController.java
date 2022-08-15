@@ -2,7 +2,7 @@ package controller;
 
 import dao.UsuarioDAO;
 
-public class TelaLoginController {
+public class LoginController {
 
     public boolean validaLogin(String usuario, String senha) {
         return new UsuarioDAO().validaLogin(usuario, senha);

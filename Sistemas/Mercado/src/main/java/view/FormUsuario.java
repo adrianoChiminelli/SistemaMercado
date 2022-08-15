@@ -1,6 +1,6 @@
 package view;
 
-import controller.FormUsuarioController;
+import controller.UsuarioController;
 import javax.swing.JOptionPane;
 import utils.Cripto;
 
@@ -12,7 +12,7 @@ public class FormUsuario extends javax.swing.JPanel {
     }
 
     private void atualizaTabela() {
-        FormUsuarioController controller = new FormUsuarioController();
+        UsuarioController controller = new UsuarioController();
         tbUsuarios.setModel(controller.montarTabela(tbUsuarios));
     }
 
@@ -227,7 +227,7 @@ public class FormUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        FormUsuarioController controller = new FormUsuarioController();
+        UsuarioController controller = new UsuarioController();
 
         try {
             int id = Integer.parseInt(campoID.getText());
@@ -245,7 +245,7 @@ public class FormUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        FormUsuarioController controller = new FormUsuarioController();
+        UsuarioController controller = new UsuarioController();
         boolean sucesso = false;
 
         try {
@@ -282,7 +282,7 @@ public class FormUsuario extends javax.swing.JPanel {
 
     private void tbUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUsuariosMouseClicked
         if (!btnSalvar.isVisible()) {
-            FormUsuarioController controller = new FormUsuarioController();
+            UsuarioController controller = new UsuarioController();
 
             int linha = tbUsuarios.getSelectedRow();
 

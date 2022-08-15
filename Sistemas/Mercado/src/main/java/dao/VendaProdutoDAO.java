@@ -16,7 +16,7 @@ public class VendaProdutoDAO {
     private final String INSERT_VENDA = "INSERT INTO vendas (fk_cliente, quantidade, valor_total, vendedor, metodo_pagamento, data) VALUES (?, ?, ?, ?, ?, ?)";
 
     private final String INSERT_PRODUTOS = "INSERT INTO venda_produto (id_venda, id_produto, qtd_produto) VALUES (?, ?, ?)";
-    
+
     public void salvarVenda(Venda venda, List<VendaProduto> listaProdutos) {
         try {
             Connection conexao = new Conexao().conectar();

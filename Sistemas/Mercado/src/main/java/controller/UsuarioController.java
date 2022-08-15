@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.Usuario;
 
-public class FormUsuarioController {
+public class UsuarioController {
 
     public boolean excluiUsuario(int id, String nome) {
         UIManager.put("OptionPane.okButtonText", "Sim");

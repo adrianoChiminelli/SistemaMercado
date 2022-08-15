@@ -1,6 +1,6 @@
 package view;
 
-import controller.TelaLoginController;
+import controller.LoginController;
 import javax.swing.ImageIcon;
 import utils.Cripto;
 
@@ -135,7 +135,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        TelaLoginController controller = new TelaLoginController();
+        LoginController controller = new LoginController();
         String usuario = campoUsuario.getText();
         String senha = Cripto.getSenha(campoSenha.getPassword());
 

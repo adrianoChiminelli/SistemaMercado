@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.Produto;
 
-public class FormProdutoController {
+public class ProdutoController {
 
     public boolean salvaProduto(String descricao, int quant, Double valor) {
 

@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import utils.UtilCPF;
 
-public class FormClienteController {
+public class ClienteController {
 
     UtilCPF util = new UtilCPF();
 

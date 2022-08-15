@@ -1,6 +1,7 @@
 package model;
 
 import dao.VendaProdutoDAO;
+import dao.VendasDAO;
 import java.util.Date;
 import java.util.List;
 
@@ -102,6 +103,14 @@ public class Venda {
 
     public void salvaVenda(Venda venda, List<VendaProduto> listaProduto) {
         new VendaProdutoDAO().salvarVenda(venda, listaProduto);
+    }
+
+    public List<Venda> getListaVenda() {
+        return new VendasDAO().findAll();
+    }
+
+    public List<Produto> getListaProduto(int id) {
+        return new VendasDAO().findAllProducts(id);
     }
 
 }

@@ -1,6 +1,6 @@
 package view;
 
-import controller.FormProdutoController;
+import controller.ProdutoController;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -13,7 +13,7 @@ public class FormProduto extends javax.swing.JPanel {
     }
 
     private void atualizaTabela() {
-        FormProdutoController controller = new FormProdutoController();
+        ProdutoController controller = new ProdutoController();
         tbProdutos.setModel(controller.montarTabela(tbProdutos));
     }
 
@@ -210,7 +210,7 @@ public class FormProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        FormProdutoController controller = new FormProdutoController();
+        ProdutoController controller = new ProdutoController();
         int id = Integer.parseInt(campoID.getText());
         String descricao = campoDescricao.getText();
 
@@ -223,7 +223,7 @@ public class FormProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        FormProdutoController controller = new FormProdutoController();
+        ProdutoController controller = new ProdutoController();
         boolean sucesso = false;
 
         try {

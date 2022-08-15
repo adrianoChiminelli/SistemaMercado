@@ -13,7 +13,7 @@ import model.Venda;
 import model.VendaProduto;
 import utils.StringFormat;
 
-public class FormVendaController {
+public class VendaController {
 
     public Optional<Cliente> selecionaCliente(int id) {
         return new ClienteDAO().findById(id);

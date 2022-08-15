@@ -101,6 +101,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         miConsultaVenda.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         miConsultaVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Pesquisar.png"))); // NOI18N
         miConsultaVenda.setText("Consultar Venda");
+        miConsultaVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultaVendaActionPerformed(evt);
+            }
+        });
         menuVenda.add(miConsultaVenda);
 
         barraMenu.add(menuVenda);
@@ -172,6 +177,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         DialogAlteraSenha tela = new DialogAlteraSenha(new JFrame() , true, USER);
         tela.setVisible(true);
     }//GEN-LAST:event_miNovaSenhaActionPerformed
+
+    private void miConsultaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultaVendaActionPerformed
+        FormConsultaVenda form = new FormConsultaVenda();
+        abrePainel(form);
+    }//GEN-LAST:event_miConsultaVendaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;

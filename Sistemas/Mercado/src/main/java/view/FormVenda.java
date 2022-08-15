@@ -1,6 +1,6 @@
 package view;
 
-import controller.FormVendaController;
+import controller.VendaController;
 import java.awt.Frame;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
@@ -52,7 +52,6 @@ public class FormVenda extends javax.swing.JPanel {
         lbQtdTotal = new javax.swing.JLabel();
         lbValorTotal = new javax.swing.JLabel();
         lbVendedor = new javax.swing.JLabel();
-        lbTitulo = new javax.swing.JLabel();
         lbMetPag = new javax.swing.JLabel();
         opVista = new javax.swing.JRadioButton();
         opCredito = new javax.swing.JRadioButton();
@@ -159,7 +158,7 @@ public class FormVenda extends javax.swing.JPanel {
 
         pFinalVenda.setVisible(false);
         pFinalVenda.setBackground(new java.awt.Color(255, 255, 255));
-        pFinalVenda.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 0, 0, new java.awt.Color(204, 204, 204)));
+        pFinalVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados da Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 20))); // NOI18N
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon OK.png"))); // NOI18N
         btnSalvar.setText("Salvar");
@@ -201,10 +200,6 @@ public class FormVenda extends javax.swing.JPanel {
         lbVendedor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbVendedor.setText("Vendedor:");
 
-        lbTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Dados da Venda");
-
         lbMetPag.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbMetPag.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbMetPag.setText("Método Pag.:");
@@ -241,9 +236,6 @@ public class FormVenda extends javax.swing.JPanel {
             .addGroup(pFinalVendaLayout.createSequentialGroup()
                 .addGroup(pFinalVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pFinalVendaLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(lbTitulo))
-                    .addGroup(pFinalVendaLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(pFinalVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pFinalVendaLayout.createSequentialGroup()
@@ -276,7 +268,7 @@ public class FormVenda extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(pFinalVendaLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(56, 56, 56)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -285,9 +277,7 @@ public class FormVenda extends javax.swing.JPanel {
         pFinalVendaLayout.setVerticalGroup(
             pFinalVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pFinalVendaLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lbTitulo)
-                .addGap(26, 26, 26)
+                .addGap(32, 32, 32)
                 .addGroup(pFinalVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbIdCliente)
                     .addComponent(campoIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -307,7 +297,7 @@ public class FormVenda extends javax.swing.JPanel {
                 .addGroup(pFinalVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbVendedor)
                     .addComponent(campoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(37, 37, 37)
                 .addGroup(pFinalVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbMetPag)
                     .addComponent(opVista))
@@ -319,14 +309,14 @@ public class FormVenda extends javax.swing.JPanel {
                 .addGroup(pFinalVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbData)
                     .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(pFinalVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
-                .addGap(62, 62, 62))
+                .addGap(40, 40, 40))
         );
 
-        add(pFinalVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(837, 0, -1, 697));
+        add(pFinalVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(837, 17, -1, 640));
 
         lbEmEstoque.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbEmEstoque.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -394,7 +384,7 @@ public class FormVenda extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        FormVendaController vendaController = new FormVendaController();
+        VendaController vendaController = new VendaController();
         StringFormat format = new StringFormat();
 
         if (!campoIdCliente.getText().equals("")) {
@@ -443,7 +433,7 @@ public class FormVenda extends javax.swing.JPanel {
     }//GEN-LAST:event_selecaoIdProdutoKeyReleased
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        FormVendaController vendaController = new FormVendaController();
+        VendaController vendaController = new VendaController();
 
         if (!selecaoIdProduto.getText().equals("")) {
 
@@ -456,7 +446,7 @@ public class FormVenda extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        FormVendaController vendaController = new FormVendaController();
+        VendaController vendaController = new VendaController();
         int linha = tbNovaVenda.getSelectedRow();
 
         if (tbNovaVenda.getSelectedRow() >= 0) {
@@ -517,7 +507,6 @@ public class FormVenda extends javax.swing.JPanel {
     private javax.swing.JLabel lbProduto;
     private javax.swing.JLabel lbQtdTotal;
     private javax.swing.JLabel lbQuantidade;
-    private javax.swing.JLabel lbTitulo;
     private javax.swing.JLabel lbValorTotal;
     private javax.swing.JLabel lbVendedor;
     private javax.swing.JRadioButton opCredito;
@@ -598,7 +587,7 @@ public class FormVenda extends javax.swing.JPanel {
     }
 
     private void selecionaCliente() {
-        FormVendaController vendaController = new FormVendaController();
+        VendaController vendaController = new VendaController();
         int id = Integer.parseInt(selecaoIdCliente.getText());
 
         try {
@@ -616,7 +605,7 @@ public class FormVenda extends javax.swing.JPanel {
     }
 
     private void selecionaProduto() {
-        FormVendaController vendaController = new FormVendaController();
+        VendaController vendaController = new VendaController();
         int id = Integer.parseInt(selecaoIdProduto.getText());
 
         try {
