@@ -26,15 +26,22 @@ public class VendasDAO implements FuncoesDAO<Venda> {
 
     private static final String SELECT_BY_ID = "SELECT * FROM vendas WHERE id_venda = ?";
 
-    private static final String DELETE = "DELETE FROM vendas WHERE id_venda = ?";
+    private static final String SELECT_BY_CLIENTE_ID = "SELECT * FROM vendas WHERE fk_cliente = ?";
 
-    private static final String UPDATE = "UPDATE vendas SET fk_cliente = ?, quantidade = ? , valor_total = ?, vendedor = ?, metodo_pagamento = ?, data = ? WHERE id_venda = ?";
+    private static final String SELECT_BY_CLIENTE_NAME = "SELECT v.id_venda, v.fk_cliente, v.quantidade, v.valor_total, v.vendedor, v.metodo_pagamento,  v.data FROM vendas v "
+            + "INNER JOIN clientes c ON c.id_cliente = v.fk_cliente WHERE c.nome_cliente like ?";
 
     private final String SELECT_PRODUTOS
             = "SELECT p.id_produto, p.descricao_produto, vp.qtd_produto, p.valor from vendas v "
             + "INNER JOIN venda_produto vp on v.id_venda = vp.id_venda "
             + "INNER JOIN produtos p ON p.id_produto = vp.id_produto "
             + "WHERE v.id_venda = ?";
+    
+    private static final String SELECT_BY_DATE = "SELECT * FROM vendas WHERE data = ?";
+
+    private static final String DELETE = "DELETE FROM vendas WHERE id_venda = ?";
+
+    private static final String UPDATE = "UPDATE vendas SET fk_cliente = ?, quantidade = ? , valor_total = ?, vendedor = ?, metodo_pagamento = ?, data = ? WHERE id_venda = ?";
 
     @Override
     public void insert(Venda objeto) {
@@ -170,6 +177,52 @@ public class VendasDAO implements FuncoesDAO<Venda> {
         Double valor = rs.getDouble("valor");
 
         return new Produto(id, descricaoProduto, quantidadeEstoque, valor);
+    }
+
+    public List<Venda> findByCliente(int id) {
+        List<Venda> listaVendas = new ArrayList<>();
+
+        try {
+            Connection conexao = new Conexao().conectar();
+            PreparedStatement pstm = conexao.prepareStatement(SELECT_BY_CLIENTE_ID);
+            pstm.setInt(1, id);
+
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+
+                listaVendas.add(criaVenda(rs));
+            }
+
+            return listaVendas;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro " + e.getMessage());
+        }
+        return listaVendas;
+    }
+
+    public List<Venda> findByCliente(String nome) {
+        List<Venda> listaVendas = new ArrayList<>();
+
+        try {
+            Connection conexao = new Conexao().conectar();
+            PreparedStatement pstm = conexao.prepareStatement(SELECT_BY_CLIENTE_NAME);
+            pstm.setString(1, "%" + nome + "%");
+
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+
+                listaVendas.add(criaVenda(rs));
+            }
+
+            return listaVendas;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro " + e.getMessage());
+        }
+        return listaVendas;
     }
 
 }

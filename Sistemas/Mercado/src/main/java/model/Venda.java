@@ -4,6 +4,7 @@ import dao.VendaProdutoDAO;
 import dao.VendasDAO;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class Venda {
 
@@ -89,12 +90,12 @@ public class Venda {
     public void setData(Date data) {
         this.data = data;
     }
-    
-    public boolean validaCampos(){
-        return fkCliente != 0 
-                && quantidadeTotal != 0 
-                && valorTotal != 0 
-                && vendedor != null 
+
+    public boolean validaCampos() {
+        return fkCliente != 0
+                && quantidadeTotal != 0
+                && valorTotal != 0
+                && vendedor != null
                 && vendedor.length() > 0
                 && metodoPagamento != null
                 && metodoPagamento.length() > 0
@@ -111,6 +112,18 @@ public class Venda {
 
     public List<Produto> getListaProduto(int id) {
         return new VendasDAO().findAllProducts(id);
+    }
+
+    public Optional<Venda> getVenda(int id) {
+        return new VendasDAO().findById(id);
+    }
+
+    public List<Venda> getVendasByCliente(int id) {
+        return new VendasDAO().findByCliente(id);
+    }
+
+    public List<Venda> getVendasByCliente(String nome) {
+        return new VendasDAO().findByCliente(nome);
     }
 
 }
