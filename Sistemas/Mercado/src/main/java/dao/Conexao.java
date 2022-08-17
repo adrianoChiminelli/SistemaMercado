@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class Conexao {
 
     private static final String URL = "jdbc:mysql://localhost:3306/";
-    private static final String NOME_BANCO = "mercadotemdetudo";
+    private static final String NOME_BANCO = "NOME DO BANCO";
     private static final String USUARIO_BANCO = "root";
     private static final String SENHA_BANCO = "";
 
