@@ -9,4 +9,6 @@ Usando padrão MVC.
 Bando de dados MySQL, disponibilizei um banco de exemplo com um usuario já cadastrado:
 Login e senha: admin
 
+Importe ele no PhpMyAdmin para utilizar de suas funcionalidades
+
 obs. lembre de alterar o nome do banco na classe de conexão!
