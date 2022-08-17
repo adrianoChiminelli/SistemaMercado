@@ -73,7 +73,7 @@ public class FormVenda extends javax.swing.JPanel {
         lbErro = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1280, 678));
-        setName("Vendas"); // NOI18N
+        setName("Nova Vendas"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1280, 678));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

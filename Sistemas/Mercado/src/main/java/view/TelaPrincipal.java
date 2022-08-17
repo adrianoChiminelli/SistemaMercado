@@ -1,16 +1,20 @@
 package view;
 
+import controller.CloseButton;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class TelaPrincipal extends javax.swing.JFrame {
-    private final  String USER;
+
+    private final String USER;
 
     public TelaPrincipal(String usuario, int nvAcesso) {
         initComponents();
         this.USER = usuario;
-        
+
         if (nvAcesso == 0) {
             JOptionPane.showMessageDialog(null, "Tente novamente com outro usuario ou contate o\nadministrador do sistema!", "Usuario Inativo!", 1);
             System.exit(0);
@@ -21,22 +25,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     public void abrePainel(JPanel painel) {
-
         if (tabPainel.getTabCount() == 0) {
             tabPainel.addTab(painel.getName(), painel);
+            tabPainel.setTabComponentAt(0, new CloseButton(tabPainel));
         } else {
             for (int i = 0; i < tabPainel.getTabCount(); i++) {
                 if (tabPainel.getTitleAt(i).equals(painel.getName())) {
                     tabPainel.setSelectedIndex(i);
+                    tabPainel.setTabComponentAt(i, new CloseButton(tabPainel));
                     return;
                 }
             }
             tabPainel.addTab(painel.getName(), painel);
             tabPainel.setSelectedIndex(tabPainel.getTabCount() - 1);
+            tabPainel.setTabComponentAt(tabPainel.getTabCount() - 1, new CloseButton(tabPainel));
         }
     }
-    
-    public String getUsuario(){
+
+    public String getUsuario() {
         return this.USER;
     }
 
@@ -60,9 +66,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(5000, 5000));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabPainel.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tabPainel.setOpaque(true);
+        getContentPane().add(tabPainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 708));
 
         menuCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon Cliente.png"))); // NOI18N
         menuCliente.setText("Clientes");
@@ -138,17 +146,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(barraMenu);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabPainel, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabPainel, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
-        );
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -174,7 +171,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_miNovaVendaActionPerformed
 
     private void miNovaSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNovaSenhaActionPerformed
-        DialogAlteraSenha tela = new DialogAlteraSenha(new JFrame() , true, USER);
+        DialogAlteraSenha tela = new DialogAlteraSenha(new JFrame(), true, USER);
         tela.setVisible(true);
     }//GEN-LAST:event_miNovaSenhaActionPerformed
 
@@ -195,4 +192,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miNovaVenda;
     private javax.swing.JTabbedPane tabPainel;
     // End of variables declaration//GEN-END:variables
+
+    public void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/icon Frame.png")));
+    }
+
 }

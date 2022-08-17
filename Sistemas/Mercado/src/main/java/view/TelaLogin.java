@@ -1,6 +1,7 @@
 package view;
 
 import controller.LoginController;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import utils.Cripto;
 
@@ -144,6 +145,8 @@ public class TelaLogin extends javax.swing.JFrame {
             TelaPrincipal tela = new TelaPrincipal(usuario, nvAcesso);
             tela.setIconImage(new ImageIcon("/images/IconJanela.png").getImage());
             tela.setVisible(true);
+            tela.setIcon();
+            
             this.dispose();
         } else {
             lbErroLogin.setText("Usuário ou senha incorretos!");
@@ -188,8 +191,9 @@ public class TelaLogin extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaLogin().setVisible(true);
-
+                TelaLogin tela = new TelaLogin();
+                tela.setVisible(true);
+                tela.setIcon();
             }
         });
     }
@@ -205,4 +209,9 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbErroLogin;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/icon Frame.png")));
+    }
+
 }

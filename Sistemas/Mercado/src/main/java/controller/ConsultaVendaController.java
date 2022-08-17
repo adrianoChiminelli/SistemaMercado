@@ -69,7 +69,7 @@ public class ConsultaVendaController {
         for (Produto produto : listaProduto) {
             int idProd = produto.getIdProduto();
             String descricao = produto.getDescricaoProduto();
-            int quant = produto.getIdProduto();
+            int quant = produto.getQuantidadeEstoque();
             String valor = new StringFormat().doubleParaReal(produto.getValor());
 
             modelo.addRow(new Object[]{idProd, descricao, quant, valor});
@@ -95,6 +95,10 @@ public class ConsultaVendaController {
         }
 
         return modelo;
+    }
+
+    public Optional getCliente(int id) {
+        return new Cliente().getCliente(id);
     }
 
 }

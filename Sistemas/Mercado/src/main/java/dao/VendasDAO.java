@@ -37,8 +37,6 @@ public class VendasDAO implements FuncoesDAO<Venda> {
             + "INNER JOIN produtos p ON p.id_produto = vp.id_produto "
             + "WHERE v.id_venda = ?";
     
-    private static final String SELECT_BY_DATE = "SELECT * FROM vendas WHERE data = ?";
-
     private static final String DELETE = "DELETE FROM vendas WHERE id_venda = ?";
 
     private static final String UPDATE = "UPDATE vendas SET fk_cliente = ?, quantidade = ? , valor_total = ?, vendedor = ?, metodo_pagamento = ?, data = ? WHERE id_venda = ?";

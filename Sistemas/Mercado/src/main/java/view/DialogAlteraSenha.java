@@ -28,6 +28,7 @@ public class DialogAlteraSenha extends javax.swing.JDialog {
         lbConfirmar1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alterar Senha");
         setMaximumSize(new java.awt.Dimension(421, 318));
         setMinimumSize(new java.awt.Dimension(421, 318));
         setPreferredSize(new java.awt.Dimension(421, 318));
@@ -36,8 +37,8 @@ public class DialogAlteraSenha extends javax.swing.JDialog {
 
         lbTitulo.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbTitulo.setText("Alterar Senha");
-        getContentPane().add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+        lbTitulo.setText("Digite uma nova Senha");
+        getContentPane().add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
         lbNovaSenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbNovaSenha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

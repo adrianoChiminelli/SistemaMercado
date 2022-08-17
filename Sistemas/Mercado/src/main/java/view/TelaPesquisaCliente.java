@@ -7,12 +7,17 @@ import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 
 public class TelaPesquisaCliente extends javax.swing.JDialog {
-    
+
     public static Cliente cliente;
 
     public TelaPesquisaCliente(javax.swing.JFrame frame, boolean modal) {
         super(frame, modal);
         initComponents();
+        
+        List<Cliente> clientes = new Cliente().getListaCliente();
+        for (Cliente cli : clientes) {
+            montaTabela(cli);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -28,8 +33,8 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
         lbErro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Pesquisar Cliente");
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,33 +59,61 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbClientes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 171, 598, 370));
-
         campoPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campoPesquisaKeyReleased(evt);
             }
         });
-        getContentPane().add(campoPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 121, 280, 32));
 
         cbOpcao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nome", "CPF" }));
         cbOpcao.setToolTipText("");
-        getContentPane().add(cbOpcao, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 50, 215, 30));
 
         lbCampo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbCampo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbCampo.setText("Campo:");
-        getContentPane().add(lbCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 27, 113, -1));
 
         lbPesquisa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbPesquisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbPesquisa.setText("Pesquisar por:");
-        getContentPane().add(lbPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 98, 113, -1));
 
         lbErro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbErro.setForeground(new java.awt.Color(204, 0, 0));
         lbErro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        getContentPane().add(lbErro, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 98, 283, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbOpcao, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(184, 184, 184)
+                        .addComponent(lbErro, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lbCampo)
+                .addGap(6, 6, 6)
+                .addComponent(cbOpcao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbPesquisa)
+                    .addComponent(lbErro))
+                .addGap(6, 6, 6)
+                .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -89,6 +122,11 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
     private void campoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaKeyReleased
         if (KeyEvent.VK_ESCAPE == evt.getKeyCode()) {
             limpaTabela();
+
+            List<Cliente> clientes = new Cliente().getListaCliente();
+            for (Cliente cli : clientes) {
+                montaTabela(cli);
+            }
         }
 
         if (!"".equals(campoPesquisa.getText())) {
@@ -123,7 +161,7 @@ public class TelaPesquisaCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_campoPesquisaKeyReleased
 
     private void tbClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbClientesMouseClicked
-         if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
             evt.consume();
             int linha = tbClientes.getSelectedRow();
             int id = (int) tbClientes.getValueAt(linha, 0);
